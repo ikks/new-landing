@@ -316,6 +316,10 @@ footer .footer-logos .footer-logo-facebook {
   background: url(images/organizer-logo-linkedin.svg) center center no-repeat;
   background-size: contain;
 }
+.organizers-content .organizer .organizer-links .link-behance {
+  background: url(images/organizer-logo-behance.svg) center center no-repeat;
+  background-size: contain;
+}
 .organizers-content .organizers-advice {
   color: #ffffff;
   font-size: 22px;
@@ -418,9 +422,9 @@ footer .footer-logos .footer-logo-facebook {
 .speakers-content .speakers-title {
   background: url(images/title-speakers.svg) center center no-repeat;
   background-size: contain;
-  height: 73px;
+  height: 102px;
   margin: 0 auto;
-  width: 206px;
+  width: 391px;
 }
 .speakers-content .speaker {
   color: #ffffff;
