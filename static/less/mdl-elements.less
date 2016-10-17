@@ -1,0 +1,190 @@
+
+/*Label for inputs inactive*/
+.mdl-textfield__label {
+	color: @color-text-secondary;
+	font-weight: @regular;
+}
+
+/*Label for inputs activated*/
+.mdl-textfield--floating-label.is-focused .mdl-textfield__label,
+.mdl-textfield--floating-label.is-dirty .mdl-textfield__label {
+	color: @color-primary;
+}
+
+.mdl-textfield__label:after {
+	background-color: @color-primary;
+	bottom: 16px;
+}
+
+/*Overwrite the invalid of material*/
+.mdl-textfield {
+	position: relative;
+	width: 100%;
+	margin: -8px 0 0 0;
+
+	.mdl-textfield__input {
+		color: @color-text-primary;
+		padding: 6px 16px 2px;
+	}
+
+	&.has-placeholder {
+
+		.mdl-textfield__input {
+			border-color: rgba(0,0,0,.12);
+		}
+
+		.mdl-textfield__label {
+			color: @color-text-secondary;
+			font-size: 16px;
+			font-weight: @regular;
+			padding-left: 16px;
+		    transition: initial;
+    		transition-duration: .2s;
+    		top: 20px;
+
+			&:after {
+				background-color: @color-primary;
+			}
+		}
+
+		&.is-focused {
+
+			.mdl-textfield__label {
+				color: @color-primary;
+				font-size: 12px;
+				top: 10px;
+			}
+		}
+
+		&.is-dirty {
+
+			.mdl-textfield__label {
+				color: @color-primary;
+				font-size: 12px;
+				top: 10px;
+			}
+		}
+	}
+
+	&.is-invalid {
+
+		.mdl-textfield__input {
+			border-color: rgba(0,0,0,.12);
+		}
+
+		.mdl-textfield__label {
+			color: @color-text-secondary;
+			font-size: 16px;
+			font-weight: @regular;
+
+			&:after {
+				background-color: @color-primary;
+			}
+		}
+
+		&.is-focused {
+
+			.mdl-textfield__label {
+				color: @color-primary;
+				font-size: 12px;
+				top: 10px;
+			}
+		}
+
+		&.is-dirty {
+
+			.mdl-textfield__label {
+				color: @color-primary;
+				font-size: 12px;
+				top: 10px;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 992px) {
+
+}
+
+
+@media screen and (max-width: 768px) {
+
+	.mdl-textfield {
+
+		&.has-placeholder {
+
+			.mdl-textfield__label {
+				font-size: 14px;
+			    font-weight: @regular;
+			    padding-left: 16px;
+			    top: 13px;
+			}
+
+			&.is-focused {
+
+				.mdl-textfield__label {
+				    font-size: 10px;
+    				top: 10px;
+				}
+			}
+
+			&.is-dirty {
+
+				.mdl-textfield__label {
+					font-size: 10px;
+					top: 10px;
+				}
+			}
+		}
+
+		&.is-invalid {
+
+
+			.mdl-textfield__label {
+				font-size: 14px;
+			    font-weight: @regular;
+			    padding-left: 16px;
+			    top: 13px;
+
+				&:after {
+				}
+			}
+
+			&.is-focused {
+
+				.mdl-textfield__label {
+					font-size: 10px;
+					top: 10px;
+				}
+			}
+
+			&.is-dirty {
+
+				.mdl-textfield__label {
+					font-size: 10px;
+					top: 10px;
+				}
+			}
+		}
+	}
+
+
+	.mdl-textfield {
+		margin-bottom: -12px;
+
+		&.is-dirty, &.is-focused {
+
+			.mdl-textfield__label {
+				font-size: 10px;
+			}
+		}
+		.mdl-textfield__input {
+			font-size: 14px;
+			padding: 8px 16px 2px;
+		}
+
+		.mdl-textfield__label {
+		    font-size: 14px;
+		}
+	}
+}
