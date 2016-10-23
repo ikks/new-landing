@@ -766,6 +766,10 @@ footer .footer-logos .footer-logo-facebook {
   background: url(images/organizer-logo-behance.svg) center center no-repeat;
   background-size: contain;
 }
+.organizers-content .organizer .organizer-links .link-github {
+  background: url(images/organizer-logo-github.svg) center center no-repeat;
+  background-size: contain;
+}
 .organizers-content .organizers-advice {
   color: #ffffff;
   font-size: 22px;
@@ -918,6 +922,10 @@ footer .footer-logos .footer-logo-facebook {
 }
 .speakers-content .speaker .speaker-links .link-linkedin {
   background: url(images/speaker-logo-linkedin.svg) center center no-repeat;
+  background-size: contain;
+}
+.speakers-content .speaker .speaker-links .link-github {
+  background: url(images/speaker-logo-github.svg) center center no-repeat;
   background-size: contain;
 }
 @media screen and (max-width: 992px) {

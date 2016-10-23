@@ -58,6 +58,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <script src="../static/js/libs/wow.js"></script>
     <script src="../static/js/libs/dialog-polyfill.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ajv/4.1.5/ajv.min.js"></script>
 
     <!-- Facebook and twitter libraries -->
     <script src="https://npmcdn.com/react@15.3.0/dist/react-with-addons.js"></script>
@@ -139,6 +140,35 @@
                           <div class="speaker-links">
                             <a href="https://jacobian.org/"  target="_blank"><div class="speaker-link link-web"></div></a>
                             <a href="https://twitter.com/jacobian" target="_blank"><div class="speaker-link link-twitter"></div></a>
+                            <a href="https://github.com/jacobian" target="_blank"><div class="speaker-link link-github"></div></a>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-xs-12 col-sm-4 col-md-3 col-centered">
+                        <div class="speaker">
+                          <img src="../static/images/speaker-05.png">
+                          <div class="speaker-name">Daniel Roy Greenfeld</div>
+                          <div class="speaker-description">Co-author of Two scoops of Django</div>
+                          <div class="speaker-links">
+                            <a href="https://www.pydanny.com/" target="_blank"><div class="speaker-link link-web"></div></a>
+                            <a href="https://twitter.com/pydanny" target="_blank"><div class="speaker-link link-twitter"></div></a>
+                            <a href="https://github.com/pydanny" target="_blank"><div class="speaker-link link-github"></div></a>
+                            <!-- <a href="https://www.linkedin.com/in/pydanny" target="_blank"><div class="speaker-link link-linkedin"></div></a> -->
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-xs-12 col-sm-4 col-md-3 col-centered">
+                        <div class="speaker">
+                          <img src="../static/images/speaker-06.png">
+                          <div class="speaker-name">Audrey Roy Greenfeld</div>
+                          <div class="speaker-description">Co-author of Two scoops of Django</div>
+                          <div class="speaker-links">
+                            <a href="https://www.audreyr.com/" target="_blank"><div class="speaker-link link-web"></div></a>
+                            <a href="https://twitter.com/audreyr" target="_blank"><div class="speaker-link link-twitter"></div></a>
+                            <a href="https://github.com/audreyr" target="_blank"><div class="speaker-link link-github"></div></a>
+                            <!-- <a href="https://www.linkedin.com/in/audrey" target="_blank"><div class="speaker-link link-linkedin"></div></a> -->
                           </div>
                         </div>
                       </div>
@@ -150,19 +180,8 @@
                           <div class="speaker-description">Co-founder of Read the Docs and Write the Docs</div>
                           <div class="speaker-links">
                             <a href="http://ericholscher.com/" target="_blank"><div class="speaker-link link-web"></div></a>
-                            <a href="https://twitter.com/ericholscher" target="_blank"><div class="speaker-link link-twitter"></div></a>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="col-xs-12 col-sm-4 col-md-3 col-centered">
-                        <div class="speaker">
-                          <img src="../static/images/speaker-03.png">
-                          <div class="speaker-name">Elizabeth Ramirez</div>
-                          <div class="speaker-description">Senior Software Engineer at The New York Times</div>
-                          <div class="speaker-links">
-                            <a href="https://twitter.com/eramirem" target="_blank"><div class="speaker-link link-twitter"></div></a>
-                            <a href="https://www.linkedin.com/in/eramirem" target="_blank"><div class="speaker-link link-linkedin"></div></a>
+                            <a href="https://twitter.com/ericholscher" target="_blank"><div class="speaker-link link-twitter"></div>
+                            <a href="https://github.com/ericholscher" target="_blank"><div class="speaker-link link-github"></div></a>
                           </div>
                         </div>
                       </div>
@@ -175,7 +194,8 @@
                           <div class="speaker-links">
                             <a href="https://peadarcoyle.wordpress.com/" target="_blank"><div class="speaker-link link-web"></div></a>
                             <a href="https://twitter.com/Springcoil" target="_blank"><div class="speaker-link link-twitter"></div></a>
-                            <a href="https://uk.linkedin.com/in/peadarcoyle" target="_blank"><div class="speaker-link link-linkedin"></div></a>
+                            <a href="https://github.com/springcoil" target="_blank"><div class="speaker-link link-github"></div></a>
+                            <!-- <a href="https://uk.linkedin.com/in/peadarcoyle" target="_blank"><div class="speaker-link link-linkedin"></div></a> -->
                           </div>
                         </div>
                       </div>
@@ -233,41 +253,42 @@
                         <div class="form-container">
                           <div class="field-container">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label has-placeholder">
-                              <input class="mdl-textfield__input" type="text" id="name-from" autocomplete="off">
-                              <label class="mdl-textfield__label search-bar-input-label" for="name-from">Name</label>
+                              <input class="mdl-textfield__input" type="text" id="speaker-name-field" autocomplete="off">
+                              <label class="mdl-textfield__label search-bar-input-label" for="speaker-name-field">Name</label>
                             </div>
                           </div>
                           <div class="field-container">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label has-placeholder">
-                              <input class="mdl-textfield__input" type="text" id="email-from" autocomplete="off">
-                              <label class="mdl-textfield__label search-bar-input-label" for="email-from">Email</label>
+                              <input class="mdl-textfield__input" type="text" id="speaker-email-field" autocomplete="off">
+                              <label class="mdl-textfield__label search-bar-input-label" for="speaker-email-field">Email</label>
                             </div>
                           </div>
                           <div class="field-container">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label has-placeholder">
-                              <input class="mdl-textfield__input" type="text" id="type-from" autocomplete="off">
-                              <label class="mdl-textfield__label search-bar-input-label" for="type-from">Type (workshop or talk)</label>
+                              <input class="mdl-textfield__input" type="text" id="speaker-type-field" autocomplete="off">
+                              <label class="mdl-textfield__label search-bar-input-label" for="speaker-type-field">Type (workshop or talk)</label>
                             </div>
                           </div>
                           <div class="field-container">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label has-placeholder">
-                              <input class="mdl-textfield__input" type="text" id="title-from" autocomplete="off">
-                              <label class="mdl-textfield__label search-bar-input-label" for="title-from">Title</label>
+                              <input class="mdl-textfield__input" type="text" id="speaker-title-field" autocomplete="off">
+                              <label class="mdl-textfield__label search-bar-input-label" for="speaker-title-field">Title</label>
                             </div>
                           </div>
                           <div class="field-container textarea-container">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label has-placeholder">
-                              <textarea class="mdl-textfield__input" type="text" rows= "3" id="description-from" ></textarea>
-                              <label class="mdl-textfield__label" for="description-from">Description</label>
+                              <textarea class="mdl-textfield__input" rows= "3" id="speaker-description-field" ></textarea>
+                              <label class="mdl-textfield__label" for="speaker-description-field">Description</label>
                             </div>
                           </div>
                           <div class="checkbox-container">
-                            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="check-form">
+                            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="speaker-support-field">
                               <span class="mdl-checkbox__label">Require financial support<br/>(flights and accommodation)</span>
-                              <input type="checkbox" id="check-form" class="mdl-checkbox__input">
+                              <input type="checkbox" id="speaker-support-field" class="mdl-checkbox__input">
                             </label>
                           </div>
-                          <button class="mdl-button mdl-js-button mdl-js-ripple-effect send-btn">
+                          <button id="call-for-proposal-send-button" type="button"
+                                  class="mdl-button mdl-js-button mdl-js-ripple-effect send-btn">
                             Send
                           </button>
                         </div>
@@ -371,6 +392,18 @@
                       </div>
                       <div class="col-xs-12 col-sm-4 col-md-3 col-centered">
                         <div class="organizer">
+                          <img src="../static/images/organizer-09.png">
+                          <div class="organizer-name">Andres Duque</div>
+                          <div class="organizer-description">Social media</div>
+                          <div class="organizer-links">
+                            <a href="https://twitter.com/saduqz" target="_blank"><div class="organizer-link link-twitter"></div></a>
+                            <a href="https://www.facebook.com/saduqz" target="_blank"><div class="organizer-link link-facebook"></div></a>
+                            <a href="https://www.linkedin.com/in/saduqz" target="_blank"><div class="organizer-link link-linkedin"></div></a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-12 col-sm-4 col-md-3 col-centered">
+                        <div class="organizer">
                           <img src="../static/images/organizer-00.png">
                           <div class="organizer-name">Carlos Salgado</div>
                           <div class="organizer-description">Tickets</div>
@@ -417,6 +450,7 @@
                             <a href="" target="_blank"><div class="organizer-link link-twitter"></div></a>
                             <a href="" target="_blank"><div class="organizer-link link-facebook"></div></a>
                             <a href="" target="_blank"><div class="organizer-link link-linkedin"></div></a>
+                            <a href="" target="_blank"><div class="organizer-link link-github"></div></a>
                           </div>
                         </div>
                       </div>
@@ -489,5 +523,80 @@
      ga('create', 'UA-83993472-1', 'auto');
      ga('send', 'pageview');
    </script>
+
+  <!-- handle functionality for speakers form -->
+  <script>
+
+      function onClickedSendCallForPaperButton(){
+        var formData = getSendCallForPaperFormData();
+        validateFormData(formData);
+//        console.log(formData);
+
+      }
+
+      function getSendCallForPaperFormData(){
+        return {
+          'name': document.getElementById('speaker-name-field').value,
+          'email': document.getElementById('speaker-email-field').value,
+          'type': document.getElementById('speaker-type-field').value,
+          'title': document.getElementById('speaker-title-field').value,
+          'description': document.getElementById('speaker-description-field').value,
+          'support': $('#speaker-support-field').prop('checked')
+        };
+      }
+
+      function validateFormData(formData){
+
+        var callFormPaperFormSchema = {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "type" : "object",
+          "properties": {
+              "name":{
+                  "type":"string",
+                  "minLength": 1},
+              "email":{
+                  "type": "string",
+                  "format": "email",
+                  "minLength": 1},
+              "bank_account_number":{
+                   "type": "string",
+                  "minLength": 1,
+                  "maxLength": 15
+              },
+              "bank_routing_number":{
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 15
+              }
+          }
+      };
+
+        // load validator object
+        var ajv = new Ajv({"allErrors": true});
+        var valid = ajv.validate(callFormPaperFormSchema, formData); // perform validation: schema vs filled data
+
+        if (!valid){
+              console.log(ajv.errors);
+//            displayCreateEditInvestorErrorMessage(ajv.errors);
+//            hideLoadingIconSaveButton();
+        }else{
+//            var investorId = createFormData['id'];
+//            if(investorId == ''){
+//                createInvestor(investorData, createInvestorSuccess, createInvestorError)
+//            }else{
+//                editInvestor(investorId, investorData, editInvestorSuccess, editInvestorError)
+//            }
+            console.log(formData);
+        }
+
+      }
+
+
+
+      $('#call-for-proposal-send-button').click(onClickedSendCallForPaperButton);
+
+
+
+  </script>
 
 </html>
