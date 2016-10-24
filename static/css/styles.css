@@ -663,6 +663,13 @@ footer .footer-logos .footer-logo-facebook {
   font-size: 12px;
   top: 10px;
 }
+.mdl-textfield.is-invalid .mdl-textfield__error {
+  color: #ffffff;
+  display: block;
+  font-size: 12px;
+  margin-top: 5px;
+  right: 0;
+}
 @media screen and (max-width: 768px) {
   .mdl-textfield.has-placeholder .mdl-textfield__label {
     font-size: 14px;

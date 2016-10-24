@@ -256,35 +256,36 @@
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label has-placeholder">
                               <input class="mdl-textfield__input" type="text" id="speaker-name-field" autocomplete="off">
                               <label class="mdl-textfield__label search-bar-input-label" for="speaker-name-field">Name</label>
-                              <span id="speaker-name-error" class=""></span>
+                              <span id="speaker-name-error" class="mdl-textfield__error">This field is required!</span>
                             </div>
                           </div>
                           <div class="field-container">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label has-placeholder">
                               <input class="mdl-textfield__input" type="text" id="speaker-email-field" autocomplete="off">
                               <label class="mdl-textfield__label search-bar-input-label" for="speaker-email-field">Email</label>
-                              <span id="speaker-email-error" class=""></span>
+                              <span id="speaker-email-error" class="mdl-textfield__error"></span>
                             </div>
                           </div>
                           <div class="field-container">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label has-placeholder">
                               <input class="mdl-textfield__input" type="text" id="speaker-type-field" autocomplete="off">
                               <label class="mdl-textfield__label search-bar-input-label" for="speaker-type-field">Type (workshop or talk)</label>
-                              <span id="speaker-type-error" class=""></span>
+                              <span id="speaker-type-error" class="mdl-textfield__error"></span>
                             </div>
                           </div>
                           <div class="field-container">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label has-placeholder">
                               <input class="mdl-textfield__input" type="text" id="speaker-title-field" autocomplete="off">
                               <label class="mdl-textfield__label search-bar-input-label" for="speaker-title-field">Title</label>
-                              <span id="speaker-title-error" class=""></span>
+                              <span id="speaker-title-error" class="mdl-textfield__error"></span>
                             </div>
                           </div>
                           <div class="field-container textarea-container">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label has-placeholder">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label has-placeholder"><!-- Add class .is-invalid when error -->
                               <textarea class="mdl-textfield__input" rows= "3" id="speaker-description-field" ></textarea>
                               <label class="mdl-textfield__label" for="speaker-description-field">Description</label>
-                              <span id="speaker-description-error" class=""></span>
+                              <span id="speaker-description-error" class="mdl-textfield__error"></span>
+                              <!-- This is the error message, it's shown when parent has .is-invalid class-->
                             </div>
                           </div>
                           <div class="checkbox-container">
