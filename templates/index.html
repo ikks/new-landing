@@ -59,6 +59,7 @@
     <script src="../static/js/libs/wow.js"></script>
     <script src="../static/js/libs/dialog-polyfill.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ajv/4.1.5/ajv.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.5.0/firebase.js"></script>
 
     <!-- Facebook and twitter libraries -->
     <script src="https://npmcdn.com/react@15.3.0/dist/react-with-addons.js"></script>
@@ -255,36 +256,42 @@
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label has-placeholder">
                               <input class="mdl-textfield__input" type="text" id="speaker-name-field" autocomplete="off">
                               <label class="mdl-textfield__label search-bar-input-label" for="speaker-name-field">Name</label>
+                              <span id="speaker-name-error" class=""></span>
                             </div>
                           </div>
                           <div class="field-container">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label has-placeholder">
                               <input class="mdl-textfield__input" type="text" id="speaker-email-field" autocomplete="off">
                               <label class="mdl-textfield__label search-bar-input-label" for="speaker-email-field">Email</label>
+                              <span id="speaker-email-error" class=""></span>
                             </div>
                           </div>
                           <div class="field-container">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label has-placeholder">
                               <input class="mdl-textfield__input" type="text" id="speaker-type-field" autocomplete="off">
                               <label class="mdl-textfield__label search-bar-input-label" for="speaker-type-field">Type (workshop or talk)</label>
+                              <span id="speaker-type-error" class=""></span>
                             </div>
                           </div>
                           <div class="field-container">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label has-placeholder">
                               <input class="mdl-textfield__input" type="text" id="speaker-title-field" autocomplete="off">
                               <label class="mdl-textfield__label search-bar-input-label" for="speaker-title-field">Title</label>
+                              <span id="speaker-title-error" class=""></span>
                             </div>
                           </div>
                           <div class="field-container textarea-container">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label has-placeholder">
                               <textarea class="mdl-textfield__input" rows= "3" id="speaker-description-field" ></textarea>
                               <label class="mdl-textfield__label" for="speaker-description-field">Description</label>
+                              <span id="speaker-description-error" class=""></span>
                             </div>
                           </div>
                           <div class="checkbox-container">
                             <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="speaker-support-field">
                               <span class="mdl-checkbox__label">Require financial support<br/>(flights and accommodation)</span>
                               <input type="checkbox" id="speaker-support-field" class="mdl-checkbox__input">
+                              <span id="speaker-support-error" class=""></span>
                             </label>
                           </div>
                           <button id="call-for-proposal-send-button" type="button"
@@ -524,26 +531,157 @@
      ga('send', 'pageview');
    </script>
 
+
+
   <!-- handle functionality for speakers form -->
   <script>
+
+    var USER_ID = null;
+
+      /**
+     * DOM id's used in the pycon landing page
+     */
+    var LANDING_PAGE_DOM_IDS = {
+
+        // speakers form
+        SEND_CALL_FOR_PAPER_SPEAKER_NAME_FIELD: 'speaker-name-field',
+        SEND_CALL_FOR_PAPER_SPEAKER_NAME_ERROR: 'speaker-name-error',
+
+        SEND_CALL_FOR_PAPER_SPEAKER_EMAIL_FIELD: 'speaker-email-field',
+        SEND_CALL_FOR_PAPER_SPEAKER_EMAIL_ERROR: 'speaker-email-error',
+
+        SEND_CALL_FOR_PAPER_SPEAKER_TYPE_FIELD: 'speaker-type-field',
+        SEND_CALL_FOR_PAPER_SPEAKER_TYPE_ERROR: 'speaker-type-error',
+
+        SEND_CALL_FOR_PAPER_SPEAKER_TITLE_FIELD: 'speaker-title-field',
+        SEND_CALL_FOR_PAPER_SPEAKER_TITLE_ERROR: 'speaker-title-error',
+
+        SEND_CALL_FOR_PAPER_SPEAKER_DESCRIPTION_FIELD: 'speaker-description-field',
+        SEND_CALL_FOR_PAPER_SPEAKER_DESCRIPTION_ERROR: 'speaker-description-error',
+
+        SEND_CALL_FOR_PAPER_SPEAKER_SUPPORT_FIELD: 'speaker-support-field',
+        SEND_CALL_FOR_PAPER_SPEAKER_SUPPORT_ERROR: 'speaker-support-error',
+
+        SEND_CALL_FOR_PAPER_BUTTON: 'call-for-proposal-send-button'
+
+    };
+
+      /**
+       * Contains id's of the elements of the form for each field: (input, icon, error message and field container)
+       */
+      var sendCallForPaperFormFieldStructure = {
+          'name':{
+              'fieldId':LANDING_PAGE_DOM_IDS.SEND_CALL_FOR_PAPER_SPEAKER_NAME_FIELD,
+              'errorMessageFieldId': LANDING_PAGE_DOM_IDS.SEND_CALL_FOR_PAPER_SPEAKER_NAME_ERROR
+          },'email':{
+              'fieldId':LANDING_PAGE_DOM_IDS.SEND_CALL_FOR_PAPER_SPEAKER_EMAIL_FIELD,
+              'errorMessageFieldId':LANDING_PAGE_DOM_IDS.SEND_CALL_FOR_PAPER_SPEAKER_EMAIL_ERROR
+          },'type':{
+              'fieldId':LANDING_PAGE_DOM_IDS.SEND_CALL_FOR_PAPER_SPEAKER_TYPE_FIELD,
+              'errorMessageFieldId':LANDING_PAGE_DOM_IDS.SEND_CALL_FOR_PAPER_SPEAKER_TYPE_ERROR
+          },'title':{
+              'fieldId':LANDING_PAGE_DOM_IDS.SEND_CALL_FOR_PAPER_SPEAKER_TITLE_FIELD,
+              'errorMessageFieldId':LANDING_PAGE_DOM_IDS.SEND_CALL_FOR_PAPER_SPEAKER_TITLE_ERROR
+          },'description':{
+              'fieldId':LANDING_PAGE_DOM_IDS.SEND_CALL_FOR_PAPER_SPEAKER_DESCRIPTION_FIELD,
+              'errorMessageFieldId':LANDING_PAGE_DOM_IDS.SEND_CALL_FOR_PAPER_SPEAKER_DESCRIPTION_ERROR
+          }
+          ,'support':{
+              'fieldId':LANDING_PAGE_DOM_IDS.SEND_CALL_FOR_PAPER_SPEAKER_SUPPORT_FIELD,
+              'errorMessageFieldId':LANDING_PAGE_DOM_IDS.SEND_CALL_FOR_PAPER_SPEAKER_SUPPORT_ERROR
+          }
+      };
+
+      function initFirebase(){
+        // Initialize Firebase
+        var config = {
+          apiKey: "AIzaSyA2UCq6PYxhGN3JRV7tJ1sYttnDqDoDpgY",
+          authDomain: "pycon-landing-page.firebaseapp.com",
+          databaseURL: "https://pycon-landing-page.firebaseio.com",
+          storageBucket: "pycon-landing-page.appspot.com"
+        };
+        firebase.initializeApp(config);
+
+        firebase.auth().signInAnonymously().catch(function(error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          // ...
+        });
+
+      firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+          // User is signed in.
+          var isAnonymous = user.isAnonymous;
+          USER_ID = user.uid;
+          // ...
+        } else {
+          // User is signed out.
+          // ...
+        }
+        // ...
+      });
+
+      }
+
+      function writeSpeakerUserData(speakerData) {
+        firebase.database().ref('/users/' + USER_ID).set(speakerData);
+      }
 
       function onClickedSendCallForPaperButton(){
         var formData = getSendCallForPaperFormData();
         validateFormData(formData);
 //        console.log(formData);
-
       }
 
       function getSendCallForPaperFormData(){
         return {
-          'name': document.getElementById('speaker-name-field').value,
-          'email': document.getElementById('speaker-email-field').value,
-          'type': document.getElementById('speaker-type-field').value,
-          'title': document.getElementById('speaker-title-field').value,
-          'description': document.getElementById('speaker-description-field').value,
-          'support': $('#speaker-support-field').prop('checked')
+          'name': document.getElementById(LANDING_PAGE_DOM_IDS.SEND_CALL_FOR_PAPER_SPEAKER_NAME_FIELD).value,
+          'email': document.getElementById(LANDING_PAGE_DOM_IDS.SEND_CALL_FOR_PAPER_SPEAKER_EMAIL_FIELD).value,
+          'type': document.getElementById(LANDING_PAGE_DOM_IDS.SEND_CALL_FOR_PAPER_SPEAKER_TYPE_FIELD).value,
+          'title': document.getElementById(LANDING_PAGE_DOM_IDS.SEND_CALL_FOR_PAPER_SPEAKER_TITLE_FIELD).value,
+          'description': document.getElementById(LANDING_PAGE_DOM_IDS.SEND_CALL_FOR_PAPER_SPEAKER_DESCRIPTION_FIELD).value,
+          'support': $('#'+LANDING_PAGE_DOM_IDS.SEND_CALL_FOR_PAPER_SPEAKER_SUPPORT_FIELD).prop('checked')
         };
       }
+
+
+
+      /**
+       * Show error messages and add error classes to fields in create investor
+       * @param errorArray: Array: Errors to be rendered in te form
+       */
+      function displaySendCallForPaperFormErrorMessage(errorArray){
+
+          for (var i = 0; i < errorArray.length; i++) {
+
+              var errorElement = errorArray[i];
+              var fieldKey = errorElement.dataPath.substring(1); // remove initial dot defined by ajv
+              var formFieldStructure = sendCallForPaperFormFieldStructure[fieldKey];
+
+              // map ids of the field components: error message, icon, container
+              var errorMessageFieldId = sendCallForPaperFormFieldStructure.errorMessageFieldId;
+              var fieldContainerId = sendCallForPaperFormFieldStructure.fieldContainerId;
+
+              displayErrorMessage(fieldContainerId, errorMessageFieldId, errorElement.message);
+          }
+      }
+
+      /**
+       *
+       * @param fieldContainerId. String, Id of the container of the field in create/edit form. Ie 'investorNameFormContainer'
+       * @param errorSpanId. String, Id of the span where error text is shown . Ie 'investorNameEditFormErrorMessage'
+       * @param errorMessage. String, Message that indicates the casue of the error. Ie 'field name is required'
+       * @param iconId. String, Id of the element where is located the icon of the field. Ie, 'investorNameFormIcon'
+       */
+      function displayErrorMessage(fieldContainerId, errorSpanId, errorMessage, iconId){
+          $('#'+fieldContainerId).addClass('is-invalid');
+          $('#'+errorSpanId).text(errorMessage);
+          updateFormIconToError(iconId);
+      }
+
+
+
 
       function validateFormData(formData){
 
@@ -553,23 +691,27 @@
           "properties": {
               "name":{
                   "type":"string",
-                  "minLength": 1},
+                  "minLength": 1
+              },
               "email":{
                   "type": "string",
                   "format": "email",
-                  "minLength": 1},
-              "bank_account_number":{
-                   "type": "string",
-                  "minLength": 1,
-                  "maxLength": 15
+                  "minLength": 1
               },
-              "bank_routing_number":{
+              "type":{
                   "type": "string",
-                  "minLength": 1,
-                  "maxLength": 15
+                  "minLength": 1
+              },
+              "title":{
+                  "type": "string",
+                  "minLength": 1
+              },
+              "description":{
+                  "type": "string",
+                  "minLength": 1
               }
           }
-      };
+        };
 
         // load validator object
         var ajv = new Ajv({"allErrors": true});
@@ -577,7 +719,7 @@
 
         if (!valid){
               console.log(ajv.errors);
-//            displayCreateEditInvestorErrorMessage(ajv.errors);
+            displaySendCallForPaperFormErrorMessage(ajv.errors);
 //            hideLoadingIconSaveButton();
         }else{
 //            var investorId = createFormData['id'];
@@ -587,13 +729,26 @@
 //                editInvestor(investorId, investorData, editInvestorSuccess, editInvestorError)
 //            }
             console.log(formData);
+            writeSpeakerUserData(formData);
         }
 
       }
 
+      function addActionsToDomElements(){
+        $('#call-for-proposal-send-button').click(onClickedSendCallForPaperButton);
+      }
+
+      addActionsToDomElements();
+      initFirebase();
 
 
-      $('#call-for-proposal-send-button').click(onClickedSendCallForPaperButton);
+
+
+
+
+
+
+
 
 
 
