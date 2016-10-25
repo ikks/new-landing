@@ -224,6 +224,13 @@ footer .footer-logos .footer-logo-facebook {
   top: 6px;
   width: 13px;
 }
+.got-idea-content .form-container .package-text {
+  color: #ffffff;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.4;
+  margin-top: -14px;
+}
 .got-idea-content .form-container .send-btn {
   background: #f55164;
   border-radius: 0;
@@ -295,6 +302,10 @@ footer .footer-logos .footer-logo-facebook {
     font-size: 18px;
     height: 42px;
     width: 100%;
+  }
+  .got-idea-content .form-container .package-text {
+    margin-bottom: 21px;
+    margin-top: -12px;
   }
 }
 @media screen and (max-width: 768px) {
@@ -675,7 +686,7 @@ footer .footer-logos .footer-logo-facebook {
     font-size: 14px;
     font-weight: 400;
     padding-left: 16px;
-    top: 13px;
+    top: 20px;
   }
   .mdl-textfield.has-placeholder.is-focused .mdl-textfield__label {
     font-size: 10px;
@@ -1120,6 +1131,23 @@ a:hover {
 .stars-bg-complete {
   background: url(images/stars.svg) top center repeat-x;
   width: 100%;
+}
+/*Animation*/
+.spin-animation {
+  animation: spin 1.2s infinite linear;
+  -moz-animation: spin 1.2s infinite linear;
+  -o-animation: spin 1.2s infinite linear;
+  -webkit-animation: spin 1.2s infinite linear;
+}
+@keyframes spin {
+  from {
+    transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+  }
+  to {
+    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+  }
 }
 @media screen and (max-width: 992px) {
   .social-btn {

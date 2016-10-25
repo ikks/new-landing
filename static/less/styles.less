@@ -93,6 +93,26 @@ a {
 	width: 100%;
 }
 
+/*Animation*/
+
+.spin-animation {
+	animation: spin 1.2s infinite linear;
+	-moz-animation: spin 1.2s infinite linear;
+	-o-animation: spin 1.2s infinite linear;
+	-webkit-animation: spin 1.2s infinite linear;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+  }
+  to {
+    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+  }
+}
+
 
 @media screen and (max-width: 1400px) {
 

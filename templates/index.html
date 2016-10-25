@@ -265,7 +265,7 @@
                                         </div>
                                       </div>
                                     </div>
-                                    -->
+                                  -->
 
                                 </div><!-- row ends -->
                             </div><!-- speakers-content ends -->
@@ -344,11 +344,12 @@
                                                 <div id="speaker-description-field-container"
                                                      class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label has-placeholder">
                                                     <!-- Add class .is-invalid when error -->
-                                                    <textarea class="mdl-textfield__input" rows="3"
-                                                              id="speaker-description-field"></textarea>
-                                                    <label class="mdl-textfield__label" for="speaker-description-field">Description and Url</label>
-                                                    <span id="speaker-description-error"
-                                                          class="mdl-textfield__error"></span>
+                                  <textarea class="mdl-textfield__input" rows="3"
+                                            id="speaker-description-field"></textarea>
+                                                    <label class="mdl-textfield__label" for="speaker-description-field">Description
+                                                        and Url</label>
+                                  <span id="speaker-description-error"
+                                        class="mdl-textfield__error"></span>
                                                     <!-- This is the error message, it's shown when parent has .is-invalid class-->
                                                 </div>
                                             </div>
@@ -356,16 +357,21 @@
                                                 <label id="speaker-support-field-container"
                                                        class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"
                                                        for="speaker-support-field">
-                              <span class="mdl-checkbox__label">Require financial support<br/>
-                                (flights and accommodation)</span>
+                                <span class="mdl-checkbox__label">Require financial support<br/>
+                                  (flights and accommodation)</span>
                                                     <input type="checkbox" id="speaker-support-field"
                                                            class="mdl-checkbox__input">
                                                 </label>
                                             </div>
-                                            <p id="speaker-form_confirmation" class="package-text hidden" style="color:white"></p>
+
+                                            <p id="speaker-form_confirmation" class="package-text"></p>
+
                                             <button id="call-for-proposal-send-button" type="button"
                                                     class="mdl-button mdl-js-button mdl-js-ripple-effect send-btn">
-                                                Send
+                                                <span id="call-for-proposal-send-button-text">Send</span>
+                                                <i id="call-for-proposal-loading-gif"
+                                                   class="material-icons spin-animation">loop</i>
+                                                <!-- Remove .hidden for show the loading icon -->
                                             </button>
                                         </div>
                                     </div>
@@ -435,7 +441,7 @@
                                         <div class="organizer">
                                             <img src="../static/images/organizer-02.png">
                                             <div class="organizer-name">Edwin (Hijo) Jerez</div>
-                                            <div class="organizer-description">Designer & Front-end</div>
+                                            <div class="organizer-description">Art Director & Front-end</div>
                                             <div class="organizer-links">
                                                 <a href="https://www.behance.net/soyelhijo" target="_blank">
                                                     <div class="organizer-link link-behance"></div>
@@ -514,6 +520,20 @@
                                                     <div class="organizer-link link-linkedin"></div>
                                                 </a>
                                             </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-4 col-md-3 col-centered">
+                                        <div class="organizer">
+                                            <img src="../static/images/organizer-10.png">
+                                            <div class="organizer-name">Juan Carlos Rodriguez</div>
+                                            <div class="organizer-description">Logistic</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-4 col-md-3 col-centered">
+                                        <div class="organizer">
+                                            <img src="../static/images/organizer-11.png">
+                                            <div class="organizer-name">Fercho Duque</div>
+                                            <div class="organizer-description">Designer</div>
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-sm-4 col-md-3 col-centered">
@@ -697,7 +717,10 @@
         SEND_CALL_FOR_PAPER_SPEAKER_SUPPORT_FIELD_CONTAINER: 'speaker-support-field-container',
 
         SEND_CALL_FOR_PAPER_BUTTON: 'call-for-proposal-send-button',
-        SEND_CALL_FOR_PAPER_FORM_CONFIRMATION: 'speaker-form_confirmation'
+        SEND_CALL_FOR_PAPER_BUTTON_TEXT: 'call-for-proposal-send-button-text',
+        SEND_CALL_FOR_PAPER_FORM_CONFIRMATION: 'speaker-form_confirmation',
+        SEND_CALL_FOR_PAPER_LOADING_GIF: 'call-for-proposal-loading-gif'
+
 
     };
 
@@ -747,8 +770,7 @@
     }
 
 
-
-    function firebaseSignIn(){
+    function firebaseSignIn() {
         firebase.auth().signInAnonymously().catch(function (error) {
             // Handle Errors here.
             var errorCode = error.code;
@@ -769,26 +791,44 @@
         });
     }
 
-    function writeSpeakerUserData(speakerData) {
-        firebase.database().ref('/proposals/'+generateUUID()).set(speakerData).then(successCallback, errorCallback);
-            function successCallback(response){
-                clearSendCallForPaperForm();
-                showConfirmationMessage("Thanks for submitting your proposal!, we will review it and get back to you soon");
-             }
-            function errorCallback(error){
-                //do something else
-                showConfirmationMessage("There was an error submitting your proposal, please try again or report the " +
-                        "issue sending an email to support@pycon.co");
-            };
+    function displayButtonText(action) {
+        var buttonTextDOMObject = $('#' + LANDING_PAGE_DOM_IDS.SEND_CALL_FOR_PAPER_BUTTON_TEXT);
+        var loadingGifDOMObject = $('#' + LANDING_PAGE_DOM_IDS.SEND_CALL_FOR_PAPER_LOADING_GIF);
+        switch (action) {
+            case 'show':
+                buttonTextDOMObject.removeClass('hidden');
+                loadingGifDOMObject.addClass('hidden');
+                break;
+            case 'hide':
+            default:
+                buttonTextDOMObject.addClass('hidden');
+                loadingGifDOMObject.removeClass('hidden');
+        }
     }
 
-    function showConfirmationMessage(message){
-        var confirmationmessageDOMObject = $('#'+LANDING_PAGE_DOM_IDS.SEND_CALL_FOR_PAPER_FORM_CONFIRMATION);
+    function writeSpeakerUserData(speakerData) {
+        firebase.database().ref('/proposals/' + generateUUID()).set(speakerData).then(successCallback, errorCallback);
+        function successCallback(response) {
+            displayButtonText('show');
+            clearSendCallForPaperForm();
+            showConfirmationMessage("Thanks for submitting your proposal!, we will review it and get back to you soon");
+        }
+
+        function errorCallback(error) {
+            //do something else
+            showConfirmationMessage("There was an error submitting your proposal, please try again or report the " +
+                    "issue sending an email to support@pycon.co");
+        };
+    }
+
+    function showConfirmationMessage(message) {
+        var confirmationmessageDOMObject = $('#' + LANDING_PAGE_DOM_IDS.SEND_CALL_FOR_PAPER_FORM_CONFIRMATION);
         confirmationmessageDOMObject.text(message);
         confirmationmessageDOMObject.removeClass('hidden');
     }
 
     function onClickedSendCallForPaperButton() {
+        displayButtonText('hide');
         var formData = getSendCallForPaperFormData();
         validateFormData(formData);
     }
@@ -837,7 +877,7 @@
     }
 
 
-    function clearSendCallForPaperForm(){
+    function clearSendCallForPaperForm() {
         clearSendCallForPaperFormField(LANDING_PAGE_DOM_IDS.SEND_CALL_FOR_PAPER_SPEAKER_NAME_FIELD);
         clearSendCallForPaperFormField(LANDING_PAGE_DOM_IDS.SEND_CALL_FOR_PAPER_SPEAKER_EMAIL_FIELD);
         clearSendCallForPaperFormField(LANDING_PAGE_DOM_IDS.SEND_CALL_FOR_PAPER_SPEAKER_TYPE_FIELD);
@@ -851,24 +891,24 @@
      * C value in the investor fields
      * @param fieldId String Id of the field to be updated. Ie 'investorEmailFormContainer'
      */
-    function clearSendCallForPaperFormField(fieldId){
-        var fieldDOMElementParent = $('#'+fieldId).val('').parent();
+    function clearSendCallForPaperFormField(fieldId) {
+        var fieldDOMElementParent = $('#' + fieldId).val('').parent();
         fieldDOMElementParent.removeClass('is-focused');
         fieldDOMElementParent.removeClass('is-dirty');
         fieldDOMElementParent.addClass('is-empty');
     }
 
-    function clearSendCallForPaperFormCheck(fieldId){
-        var fieldDOMElementParent = $('#'+fieldId).prop('checked', false).parent();
+    function clearSendCallForPaperFormCheck(fieldId) {
+        var fieldDOMElementParent = $('#' + fieldId).prop('checked', false).parent();
         fieldDOMElementParent.removeClass('is-checked');
     }
 
     function generateUUID() {
         var d = new Date().getTime();
-        var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-            var r = (d + Math.random()*16)%16 | 0;
-            d = Math.floor(d/16);
-            return (c=='x' ? r : (r&0x3|0x8)).toString(16);
+        var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+            var r = (d + Math.random() * 16) % 16 | 0;
+            d = Math.floor(d / 16);
+            return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
         });
         return uuid;
     }
@@ -910,6 +950,7 @@
         if (!valid) {
             console.log(ajv.errors);
             displaySendCallForPaperFormErrorMessage(ajv.errors);
+            displayButtonText('show');
         } else {
             writeSpeakerUserData(formData);
         }
