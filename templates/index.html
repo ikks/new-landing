@@ -346,8 +346,7 @@
                                                     <!-- Add class .is-invalid when error -->
                                   <textarea class="mdl-textfield__input" rows="3"
                                             id="speaker-description-field"></textarea>
-                                                    <label class="mdl-textfield__label" for="speaker-description-field">Description
-                                                        , duration, url and other info</label>
+                                                    <label class="mdl-textfield__label" for="speaker-description-field">Description, duration, url, language and other info</label>
                                   <span id="speaker-description-error"
                                         class="mdl-textfield__error"></span>
                                                     <!-- This is the error message, it's shown when parent has .is-invalid class-->
@@ -807,7 +806,7 @@
     }
 
     function writeSpeakerUserData(speakerData) {
-        firebase.database().ref('/proposals-hack2/'+'a9e01b68-2664-4d59-997c-38e47ade18bf').set(speakerData).then(successCallback, errorCallback);
+        firebase.database().ref('/proposals/' + generateUUID()).set(speakerData).then(successCallback, errorCallback);
         function successCallback(response) {
             displayButtonText('show');
             clearSendCallForPaperForm();
