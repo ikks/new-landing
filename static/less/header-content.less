@@ -66,8 +66,8 @@
 			/*background: url(images/blue-container.svg) center top no-repeat;*/
 			background: url(images/blue-container-large.svg) center top no-repeat;
 			background-size: contain;
-			/*height: 264px;*/
-			height: 312px;
+			height: 264px;
+			/*height: 312px;*/
 			margin: 0 auto;
 			padding-top: 93px;
 			text-align: center;
@@ -83,6 +83,25 @@
 				font-size: 16px;
 				font-weight: @light;
 				margin-top: 5px;
+			}
+
+			.ticket {
+				display: none;
+			}
+			
+			&.blue-container-ticket {
+				height: 319px;
+				padding-top: 73px;
+				width: 288px;
+
+				.ticket {
+					background: url(images/ticket.svg) center top no-repeat;
+					background-size: contain;
+					display: block;
+					height: 74px;
+					margin: 25px auto 0;
+					width: 186px;
+				}
 			}
 		}
 
@@ -160,6 +179,21 @@
 				.date {
 					font-size: 14px;
 					margin-top: 4px;
+				}
+
+				&.blue-container-ticket {
+					height: 240px;
+					padding-top: 54px;
+					width: 216px;
+
+					.ticket {
+						background: url(images/ticket.svg) center top no-repeat;
+						background-size: contain;
+						display: block;
+						height: 54px;
+						margin: 19px auto 0;
+						width: 140px;
+					}
 				}
 			}
 
