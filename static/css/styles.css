@@ -1081,6 +1081,13 @@ footer .footer-logos .footer-logo-facebook {
   margin: 0 auto;
   width: 206px;
 }
+.sponsors-content .partners-title {
+  background: url(images/title-partners.svg) center center no-repeat;
+  background-size: contain;
+  height: 95px;
+  margin: 0 auto;
+  width: 215px;
+}
 .sponsors-content .sponsors {
   text-align: center;
 }
@@ -1105,6 +1112,12 @@ footer .footer-logos .footer-logo-facebook {
   background-size: contain;
   height: 84px;
   width: 256px;
+}
+.sponsors-content .sponsors .partner-logo-santo-tomas {
+  background: url(images/partner-logo-santo-tomas.png) center center no-repeat;
+  background-size: contain;
+  height: 55px;
+  width: 360px;
 }
 @media screen and (max-width: 992px) {
   .sponsors-content .sponsors-title {
