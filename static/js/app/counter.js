@@ -2,7 +2,7 @@
  * Created by jhonjairoscalablepath on 11/15/16.
  */
 $(document).ready(function(){
-    $('#clock').countdown('2016/12/15 12:00:00')
+    $('#clock').countdown('2016/11/20 02:00:00')
     .on('update.countdown', function(event) {
         updateCounter(event.strftime('%D'), event.strftime('%H'), event.strftime('%M'), event.strftime('%S'));
     }).on('finish.countdown', function(event) {
