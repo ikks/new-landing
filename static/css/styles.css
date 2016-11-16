@@ -476,8 +476,8 @@ footer .footer-logos .footer-logo-facebook {
   /*background: url(images/blue-container.svg) center top no-repeat;*/
   background: url(images/blue-container-large.svg) center top no-repeat;
   background-size: contain;
-  /*height: 264px;*/
-  height: 312px;
+  height: 264px;
+  /*height: 312px;*/
   margin: 0 auto;
   padding-top: 93px;
   text-align: center;
@@ -493,6 +493,22 @@ footer .footer-logos .footer-logo-facebook {
   font-size: 16px;
   font-weight: 300;
   margin-top: 5px;
+}
+.header-content .header-invitation .blue-container .ticket {
+  display: none;
+}
+.header-content .header-invitation .blue-container.blue-container-ticket {
+  height: 319px;
+  padding-top: 73px;
+  width: 288px;
+}
+.header-content .header-invitation .blue-container.blue-container-ticket .ticket {
+  background: url(images/ticket.svg) center top no-repeat;
+  background-size: contain;
+  display: block;
+  height: 74px;
+  margin: 25px auto 0;
+  width: 186px;
 }
 .header-content .header-invitation .blue-bars {
   background: url(images/blue-bars.svg) center top no-repeat;
@@ -549,6 +565,19 @@ footer .footer-logos .footer-logo-facebook {
     font-size: 14px;
     margin-top: 4px;
   }
+  .header-content .header-invitation .blue-container.blue-container-ticket {
+    height: 240px;
+    padding-top: 54px;
+    width: 216px;
+  }
+  .header-content .header-invitation .blue-container.blue-container-ticket .ticket {
+    background: url(images/ticket.svg) center top no-repeat;
+    background-size: contain;
+    display: block;
+    height: 54px;
+    margin: 19px auto 0;
+    width: 140px;
+  }
   .header-content .header-invitation .blue-bars {
     bottom: -20px;
     height: 141px;
@@ -602,6 +631,51 @@ footer .footer-logos .footer-logo-facebook {
     height: 126px;
     margin-left: -141px;
     width: 283px;
+  }
+}
+.header-countdown {
+  margin: 30px auto 54px;
+  text-align: center;
+}
+.header-countdown #clockdiv {
+  color: #fff;
+  display: inline-block;
+  font-size: 60px;
+  font-weight: 100;
+  text-align: center;
+}
+.header-countdown #clockdiv > div {
+  border-radius: 3px;
+  display: inline-block;
+  padding: 10px;
+}
+.header-countdown #clockdiv div > span {
+  border-radius: 3px;
+  display: inline-block;
+  padding: 15px 0 0;
+  width: 60px;
+}
+.header-countdown .smalltext {
+  font-size: 16px;
+  padding-top: 5px;
+}
+@media screen and (max-width: 768px) {
+  .header-countdown {
+    margin: 22px auto 40px;
+  }
+  .header-countdown #clockdiv {
+    font-size: 36px;
+  }
+  .header-countdown #clockdiv > div {
+    padding: 7px;
+  }
+  .header-countdown #clockdiv div > span {
+    padding: 11px 0 0;
+    width: 44px;
+  }
+  .header-countdown .smalltext {
+    font-size: 12px;
+    padding-top: 5px;
   }
 }
 /*Label for inputs inactive*/
@@ -1007,6 +1081,13 @@ footer .footer-logos .footer-logo-facebook {
   margin: 0 auto;
   width: 206px;
 }
+.sponsors-content .partners-title {
+  background: url(images/title-partners.svg) center center no-repeat;
+  background-size: contain;
+  height: 95px;
+  margin: 0 auto;
+  width: 215px;
+}
 .sponsors-content .sponsors {
   text-align: center;
 }
@@ -1031,6 +1112,12 @@ footer .footer-logos .footer-logo-facebook {
   background-size: contain;
   height: 84px;
   width: 256px;
+}
+.sponsors-content .sponsors .partner-logo-santo-tomas {
+  background: url(images/partner-logo-santo-tomas.png) center center no-repeat;
+  background-size: contain;
+  height: 55px;
+  width: 360px;
 }
 @media screen and (max-width: 992px) {
   .sponsors-content .sponsors-title {
