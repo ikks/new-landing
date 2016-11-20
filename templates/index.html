@@ -65,7 +65,7 @@
   crossorigin="anonymous"></script>
   <script src="../static/js/libs/wow.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.countdown/2.2.0/jquery.countdown.min.js"></script>
-  <script src="../static/js/app/counter.js?v=1.0"></script>
+  <script src="../static/js/app/counter.js?v=1.4"></script>
   <script src="../static/js/libs/dialog-polyfill.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ajv/4.1.5/ajv.min.js"></script>
   <script src="https://www.gstatic.com/firebasejs/3.5.0/firebase.js"></script>
@@ -143,7 +143,7 @@
                     <h1>Pycon Colombia 2017</h1>
                     <div class="subtitle">
                       <!-- <h2>Coding the future</h2> -->
-                      <h2>Tickets available in ...</h2>
+                      <h2 id="main-logo-text">Tickets available in ...</h2>
                       <!-- <h2>Coming soon...</h2> -->
                       <div class="python-logo"></div>
                     </div>
@@ -153,19 +153,19 @@
                   <div id="clock" class="header-countdown">
                     <div id="clockdiv">
                       <div>
-                        <span id="days" class="days"></span>
+                        <span id="days" class="days">00</span>
                         <div class="smalltext">Days</div>
                       </div>
                       <div>
-                        <span id="hours" class="hours"></span>
+                        <span id="hours" class="hours">02</span>
                         <div class="smalltext">Hours</div>
                       </div>
                       <div>
-                        <span id="minutes" class="minutes"></span>
+                        <span id="minutes" class="minutes">09</span>
                         <div class="smalltext">Minutes</div>
                       </div>
                       <div>
-                        <span id="seconds" class="seconds"></span>
+                        <span id="seconds" class="seconds">24</span>
                         <div class="smalltext">Seconds</div>
                       </div>
                     </div>
@@ -173,10 +173,10 @@
 
                   <div class="header-invitation">
                     <!-- Add or remove class .blue-container-ticket to view the ticket -->
-                    <div class="blue-container text-center">
+                    <div id="city-event-date-container" class="blue-container text-center">
                       <div class="city">Bogota, Colombia</div>
                       <div class="date">February 10 and 11, 2017</div>
-                      <a href="" target="_blank"><div class="ticket"></div></a>
+                      <a id="tickets-link" href="" target="_blank"><div class="ticket"></div></a>
                     </div>
                     <!-- <div class="blue-bars"></div> -->
                   </div>
