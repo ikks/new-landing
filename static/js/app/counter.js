@@ -24,3 +24,8 @@ $(document).ready(function(){
     };
 
 });
+
+function hideCountDownAndCityContainer(){
+    $('#clock').fadeOut();
+    $('#city-event-date-container').fadeOut();
+}
