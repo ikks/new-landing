@@ -3,6 +3,25 @@
 /*Original inactive color of MDL*/
 /*Font family*/
 /*Style*/
+.become-sponsor-content .become-sponsor {
+  background: url(images/become-sponsor.svg) center center no-repeat;
+  background-size: contain;
+  height: 254px;
+  margin: 0 auto;
+  width: 401px;
+}
+@media screen and (max-width: 992px) {
+  .become-sponsor-content .become-sponsor {
+    height: 190px;
+    width: 300px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .become-sponsor-content .become-sponsor {
+    height: 171px;
+    width: 270px;
+  }
+}
 footer {
   background: rgba(0, 0, 0, 0.32);
   color: #ffffff;
@@ -1119,10 +1138,32 @@ footer .footer-logos .footer-logo-facebook {
   height: 55px;
   width: 360px;
 }
+.sponsors-content .sponsors .partner-logo-socialatompr {
+  background: url(images/partner-logo-socialatompr.png) center center no-repeat;
+  background-size: contain;
+  height: 55px;
+  width: 270px;
+}
+.sponsors-content .sponsors .partner-logo-pulsosocial {
+  background: url(images/partner-logo-pulsosocial.png) center center no-repeat;
+  background-size: contain;
+  height: 55px;
+  width: 270px;
+}
+.sponsors-content .sponsors .partner-logo-pycharm {
+  background: url(images/partner-logo-pycharm.png) center center no-repeat;
+  background-size: contain;
+  height: 50px;
+  width: 270px;
+}
 @media screen and (max-width: 992px) {
   .sponsors-content .sponsors-title {
     height: 54px;
     width: 154px;
+  }
+  .sponsors-content .partners-title {
+    height: 71px;
+    width: 161px;
   }
   .sponsors-content .sponsors .sponsor-logo {
     margin: 57px 45px 0;
@@ -1139,11 +1180,31 @@ footer .footer-logos .footer-logo-facebook {
     height: 63px;
     width: 192px;
   }
+  .sponsors-content .sponsors .partner-logo-santo-tomas {
+    height: 42px;
+    width: 270px;
+  }
+  .sponsors-content .sponsors .partner-logo-socialatompr {
+    height: 41px;
+    width: 202px;
+  }
+  .sponsors-content .sponsors .partner-logo-pulsosocial {
+    height: 41px;
+    width: 202px;
+  }
+  .sponsors-content .sponsors .partner-logo-pycharm {
+    height: 37px;
+    width: 202px;
+  }
 }
 @media screen and (max-width: 768px) {
   .sponsors-content .sponsors-title {
     height: 48px;
     width: 138px;
+  }
+  .sponsors-content .partners-title {
+    height: 64px;
+    width: 145px;
   }
   .sponsors-content .sponsors .sponsor-logo {
     margin: 51px auto 0;
@@ -1159,6 +1220,22 @@ footer .footer-logos .footer-logo-facebook {
   .sponsors-content .sponsors .sponsor-logo-toptal {
     height: 56px;
     width: 172px;
+  }
+  .sponsors-content .sponsors .partner-logo-santo-tomas {
+    height: 37px;
+    width: 243px;
+  }
+  .sponsors-content .sponsors .partner-logo-socialatompr {
+    height: 36px;
+    width: 182px;
+  }
+  .sponsors-content .sponsors .partner-logo-pulsosocial {
+    height: 36px;
+    width: 182px;
+  }
+  .sponsors-content .sponsors .partner-logo-pycharm {
+    height: 24px;
+    width: 182px;
   }
 }
 /*Transitions*/
