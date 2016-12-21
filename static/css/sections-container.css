@@ -6,3 +6,22 @@
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#33676b', endColorstr='#4a4477', GradientType=0);
   width: 100%;
 }
+.sections-container .title-section {
+  text-indent: -1000%;
+}
+.sections-container .section-content {
+  padding-top: 125px;
+  padding-bottom: 36px;
+}
+@media screen and (max-width: 992px) {
+  .sections-container .section-content {
+    padding-top: 94px;
+    padding-bottom: 27px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .sections-container .section-content {
+    padding-top: 84px;
+    padding-bottom: 24px;
+  }
+}
