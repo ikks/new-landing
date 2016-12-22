@@ -980,17 +980,28 @@ footer .footer-logos .footer-logo-facebook {
     padding-bottom: 24px;
   }
 }
-.speakers-content .speakers-title {
-  background: url(images/title-speakers.svg) center center no-repeat;
+.speakers-content .keynote-speakers-title {
+  background: url(images/title-keynote-speakers.svg) center center no-repeat;
   background-size: contain;
   height: 102px;
   margin: 0 auto;
   width: 391px;
 }
+.speakers-content .speakers-title {
+  background: url(images/title-speakers.svg) center center no-repeat;
+  background-size: contain;
+  height: 73px;
+  margin: 0 auto;
+  width: 207px;
+}
 .speakers-content .speaker {
   color: #ffffff;
   margin-top: 76px;
   text-align: center;
+}
+.speakers-content .speaker.keynote-speaker img {
+  height: 218px;
+  width: 250px;
 }
 .speakers-content .speaker img {
   display: inline-block;
@@ -1040,12 +1051,20 @@ footer .footer-logos .footer-logo-facebook {
   background-size: contain;
 }
 @media screen and (max-width: 992px) {
-  .speakers-content .speakers-title {
+  .speakers-content .keynote-speakers-title {
     height: 76px;
     width: 294px;
   }
+  .speakers-content .speakers-title {
+    height: 54px;
+    width: 155px;
+  }
   .speakers-content .speaker {
     margin-top: 57px;
+  }
+  .speakers-content .speaker.keynote-speaker img {
+    height: 163px;
+    width: 187px;
   }
   .speakers-content .speaker img {
     height: 106px;
@@ -1067,12 +1086,20 @@ footer .footer-logos .footer-logo-facebook {
   }
 }
 @media screen and (max-width: 768px) {
-  .speakers-content .speakers-title {
+  .speakers-content .keynote-speakers-title {
     height: 68px;
     width: 264px;
   }
+  .speakers-content .speakers-title {
+    height: 48px;
+    width: 139px;
+  }
   .speakers-content .speaker {
     margin-top: 51px;
+  }
+  .speakers-content .speaker.keynote-speaker img {
+    height: 146px;
+    width: 168px;
   }
   .speakers-content .speaker img {
     height: 96px;
