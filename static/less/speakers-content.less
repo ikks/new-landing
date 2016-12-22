@@ -1,18 +1,34 @@
 .speakers-content {
 
-	.speakers-title{
-		background: url(images/title-speakers.svg) center center no-repeat;
+	.keynote-speakers-title{
+		background: url(images/title-keynote-speakers.svg) center center no-repeat;
 		background-size: contain;
 		height: 102px;
 		margin: 0 auto;
 		width: 391px;
 	}
+
+	.speakers-title{
+		background: url(images/title-speakers.svg) center center no-repeat;
+		background-size: contain;
+		height: 73px;
+		margin: 0 auto;
+		width: 207px;
+	}
+
 	.speaker{
 		color: @color-white;
 		margin-top: 76px;
 		text-align: center;
 
-		img{
+		&.keynote-speaker {
+			img{
+				height: 218px;
+				width: 250px;
+			}
+		}
+
+		img {
 			display: inline-block;
 			height: 141px;
 			width: 162px;
@@ -70,13 +86,23 @@
 @media screen and (max-width: 992px) {
 	.speakers-content {
 
-		.speakers-title{
+		.keynote-speakers-title{
 			height: 76px;
 			width: 294px;
+		}
+		.speakers-title{
+			height: 54px;
+			width: 155px;
 		}
 		.speaker{
 			margin-top: 57px;
 
+			&.keynote-speaker {
+				img{
+					height: 163px;
+				width: 187px;
+				}
+			}
 			img{
 				height: 106px;
 				width: 122px;
@@ -105,13 +131,23 @@
 @media screen and (max-width: 768px) {
 	.speakers-content {
 
-		.speakers-title{
+		.keynote-speakers-title{
 			height: 68px;
 			width: 264px;
+		}
+		.speakers-title{
+			height: 48px;
+			width: 139px;
 		}
 		.speaker{
 			margin-top: 51px;
 
+			&.keynote-speaker {
+				img{
+					height: 146px;
+				width: 168px;
+				}
+			}
 			img{
 				height: 96px;
 				width: 109px;
