@@ -78,49 +78,49 @@
   </script>
 
   <script>$(document).ready(function () {
-  function getTimeRemaining(endtime) {
-    var t = Date.parse(endtime) - Date.parse(new Date());
-    var seconds = Math.floor((t / 1000) % 60);
-    var minutes = Math.floor((t / 1000 / 60) % 60);
-    var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
-    var days = Math.floor(t / (1000 * 60 * 60 * 24));
-    return {
-      'total': t,
-      'days': days,
-      'hours': hours,
-      'minutes': minutes,
-      'seconds': seconds
-    };
-  }
-
-  function initializeClock(id, endtime) {
-    var clock = document.getElementById(id);
-    var daysSpan = clock.querySelector('.days');
-    var hoursSpan = clock.querySelector('.hours');
-    var minutesSpan = clock.querySelector('.minutes');
-    var secondsSpan = clock.querySelector('.seconds');
-
-    function updateClock() {
-      var t = getTimeRemaining(endtime);
-
-      daysSpan.innerHTML = t.days;
-      hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
-      minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
-      secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
-
-      if (t.total <= 0) {
-        clearInterval(timeinterval);
-      }
+    function getTimeRemaining(endtime) {
+      var t = Date.parse(endtime) - Date.parse(new Date());
+      var seconds = Math.floor((t / 1000) % 60);
+      var minutes = Math.floor((t / 1000 / 60) % 60);
+      var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+      var days = Math.floor(t / (1000 * 60 * 60 * 24));
+      return {
+        'total': t,
+        'days': days,
+        'hours': hours,
+        'minutes': minutes,
+        'seconds': seconds
+      };
     }
 
-    updateClock();
-    var timeinterval = setInterval(updateClock, 1000);
-  }
+    function initializeClock(id, endtime) {
+      var clock = document.getElementById(id);
+      var daysSpan = clock.querySelector('.days');
+      var hoursSpan = clock.querySelector('.hours');
+      var minutesSpan = clock.querySelector('.minutes');
+      var secondsSpan = clock.querySelector('.seconds');
 
-  var deadline = new Date(Date.parse(new Date()) + 15 * 24 * 60 * 60 * 1000);
+      function updateClock() {
+        var t = getTimeRemaining(endtime);
+
+        daysSpan.innerHTML = t.days;
+        hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+        minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+        secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+
+        if (t.total <= 0) {
+          clearInterval(timeinterval);
+        }
+      }
+
+      updateClock();
+      var timeinterval = setInterval(updateClock, 1000);
+    }
+
+    var deadline = new Date(Date.parse(new Date()) + 15 * 24 * 60 * 60 * 1000);
 //  initializeClock('clockdiv', deadline);
 });
-  </script>
+</script>
 
 </head>
 
@@ -201,9 +201,17 @@
 
                     <div class="col-xs-12 col-sm-6 col-md-6 col-centered">
                       <div class="keynote-speaker speaker">
-                        <img src="../static/images/keynote-speaker-00.png">
+                        <img src="../static/images/keynote-speaker-05.png">
                         <div class="speaker-name">David Cournapeau</div>
                         <div class="speaker-description">Core contributor to numpy and scipy</div>
+                        <div class="speaker-links">
+                          <a href="https://twitter.com/cournape" target="_blank">
+                            <div class="speaker-link link-twitter"></div>
+                            <a href="https://github.com/cournape" target="_blank">
+                              <div class="speaker-link link-github"></div>
+                            </a>
+                          </div>
+                        </div>
                       </div>
                     </div>
 
@@ -248,686 +256,569 @@
                       </div>
 
 
-                  </div><!-- row ends -->
-                </div><!-- speakers-content ends -->
+                    </div><!-- row ends -->
+                  </div><!-- speakers-content ends -->
 
-
-
-
-
-
-
-
-
-
-
-                <!--
-                <div class="section-content speakers-content">
-                  <div class="title-section speakers-title">
-                    Key note speakers
+                  <div class="section-content got-idea-content">
+                    <div class="title-section got-idea-title">Got a talk idea?</div>
+                    <div class="row row-centered">
+                      <div class="col-xs-12 col-sm-12 col-md-12 col-centered">
+                        <div class="package-container">
+                          <div class="package-content">
+                            <h3 class="package-title">
+                              Tell us what is your conference about
+                            </h3>
+                            <p class="package-text">We know speakers are key to<br/>the success of a
+                              conference.</p>
+                              <p class="package-text" > - Proposals received until 10 Jan 2017 -</p>
+                              <h3 class="package-subtitle">
+                                What do Speakers get?
+                              </h3>
+                              <ul class="package-list">
+                                <li>
+                                  <i class="material-icons">check</i><span>Full conference pass</span>
+                                </li>
+                                <li><i class="material-icons">check</i><span>The opportunity to impact the lives of over a hundred developers</span>
+                                </li>
+                                <li><i class="material-icons">check</i><span>1 additional Free Conference ticket</span>
+                                </li>
+                                <li><i class="material-icons">check</i><span>Speakers Dinner and excellent time in the city</span>
+                                </li>
+                                <li><i class="material-icons">check</i><span>Possibility to apply for flights and accommodation aid based on available budget</span>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                          <div class="form-container">
+                            <div class="field-container">
+                              <div id="speaker-name-field-container"
+                              class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label has-placeholder">
+                              <input class="mdl-textfield__input" type="text"
+                              id="speaker-name-field" autocomplete="off">
+                              <label class="mdl-textfield__label search-bar-input-label"
+                              for="speaker-name-field">Name</label>
+                              <span id="speaker-name-error" class="mdl-textfield__error">This field is required!</span>
+                            </div>
+                          </div>
+                          <div class="field-container">
+                            <div id="speaker-email-field-container"
+                            class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label has-placeholder">
+                            <input class="mdl-textfield__input" type="text"
+                            id="speaker-email-field" autocomplete="off">
+                            <label class="mdl-textfield__label search-bar-input-label"
+                            for="speaker-email-field">Email</label>
+                            <span id="speaker-email-error" class="mdl-textfield__error"></span>
+                          </div>
+                        </div>
+                        <div class="field-container">
+                          <div id="speaker-type-field-container"
+                          class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label has-placeholder">
+                          <input class="mdl-textfield__input" type="text"
+                          id="speaker-type-field" autocomplete="off">
+                          <label class="mdl-textfield__label search-bar-input-label"
+                          for="speaker-type-field">Type (workshop or talk)</label>
+                          <span id="speaker-type-error" class="mdl-textfield__error"></span>
+                        </div>
+                      </div>
+                      <div class="field-container">
+                        <div id="speaker-title-field-container"
+                        class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label has-placeholder">
+                        <input class="mdl-textfield__input" type="text"
+                        id="speaker-title-field" autocomplete="off">
+                        <label class="mdl-textfield__label search-bar-input-label"
+                        for="speaker-title-field">Title</label>
+                        <span id="speaker-title-error" class="mdl-textfield__error"></span>
+                      </div>
+                    </div>
+                    <div class="field-container textarea-container">
+                      <div id="speaker-description-field-container"
+                      class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label has-placeholder">
+                      <!-- Add class .is-invalid when error -->
+                      <textarea class="mdl-textfield__input" rows="3"
+                      id="speaker-description-field"></textarea>
+                      <label class="mdl-textfield__label" for="speaker-description-field">Description, duration, url, language, other info</label>
+                      <span id="speaker-description-error"
+                      class="mdl-textfield__error"></span>
+                      <!-- This is the error message, it's shown when parent has .is-invalid class-->
+                    </div>
                   </div>
-                  <div class="row row-centered">
-                    <div class="col-xs-12 col-sm-4 col-md-3 col-centered">
-                      <div class="speaker">
-                        <img src="../static/images/speaker-00.png">
-                        <div class="speaker-name">Jacob Kaplan-Moss</div>
-                        <div class="speaker-description">Co-creator of Django</div>
-                        <div class="speaker-links">
-                          <a href="https://jacobian.org/" target="_blank">
-                            <div class="speaker-link link-web"></div>
-                          </a>
-                          <a href="https://twitter.com/jacobian" target="_blank">
-                            <div class="speaker-link link-twitter"></div>
-                          </a>
-                          <a href="https://github.com/jacobian" target="_blank">
-                            <div class="speaker-link link-github"></div>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="col-xs-12 col-sm-4 col-md-3 col-centered">
-                      <div class="speaker">
-                        <img src="../static/images/speaker-00.png">
-                        <div class="speaker-name">Eric Holscher</div>
-                        <div class="speaker-description">Co-founder of Read the Docs and Write the
-                          Docs
-                        </div>
-                        <div class="speaker-links">
-                          <a href="http://ericholscher.com/" target="_blank">
-                            <div class="speaker-link link-web"></div>
-                          </a>
-                          <a href="https://twitter.com/ericholscher" target="_blank">
-                            <div class="speaker-link link-twitter"></div>
-                            <a href="https://github.com/ericholscher" target="_blank">
-                              <div class="speaker-link link-github"></div>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="col-xs-12 col-sm-4 col-md-3 col-centered">
-                        <div class="speaker">
-                          <img src="../static/images/speaker-00.png">
-                          <div class="speaker-name">Peadar Coyle</div>
-                          <div class="speaker-description">PyMC3 Contributor and Author</div>
-                          <div class="speaker-links">
-                            <a href="https://peadarcoyle.wordpress.com/" target="_blank">
-                              <div class="speaker-link link-web"></div>
-                            </a>
-                            <a href="https://twitter.com/Springcoil" target="_blank">
-                              <div class="speaker-link link-twitter"></div>
-                            </a>
-                            <a href="https://github.com/springcoil" target="_blank">
-                              <div class="speaker-link link-github"></div>
-                            </a>
-                           </div>
-                        </div>
-                      </div>
-
-                    <div class="col-xs-12 col-sm-4 col-md-3 col-centered">
-                      <div class="speaker">
-                        <img src="../static/images/speaker-00.png">
-                        <div class="speaker-name">Amazing speaker</div>
-                        <div class="speaker-description">Coming soon...</div>
-
-                      </div>
-                    </div>
+                  <div class="checkbox-container">
+                    <label id="speaker-support-field-container"
+                    class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"
+                    for="speaker-support-field">
+                    <span class="mdl-checkbox__label">Require financial support<br/>
+                      (flights and accommodation)</span>
+                      <input type="checkbox" id="speaker-support-field"
+                      class="mdl-checkbox__input">
+                    </label>
                   </div>
-                </div> -->
 
-                <!-- speakers-content ends -->
+                  <p id="speaker-form_confirmation" class="package-text"></p>
 
+                  <button id="call-for-proposal-send-button" type="button"
+                    class="mdl-button mdl-js-button mdl-js-ripple-effect send-btn">
+                    <span id="call-for-proposal-send-button-text">Send</span>
+                    <i id="call-for-proposal-loading-gif"
+                    class="material-icons spin-animation">loop</i>
+                    <!-- Remove .hidden for show the loading icon -->
+                  </button>
+              </div>
+            </div>
+          </div><!-- row ends -->
+        </div><!-- got-idea-content ends -->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                              <div class="section-content got-idea-content">
-                                <div class="title-section got-idea-title">Got a talk idea?</div>
-                                <div class="row row-centered">
-                                  <div class="col-xs-12 col-sm-12 col-md-12 col-centered">
-                                    <div class="package-container">
-                                      <div class="package-content">
-                                        <h3 class="package-title">
-                                          Tell us what is your conference about
-                                        </h3>
-                                        <p class="package-text">We know speakers are key to<br/>the success of a
-                                          conference.</p>
-                                        <p class="package-text" > - Proposals received until 10 Jan 2017 -</p>
-                                          <h3 class="package-subtitle">
-                                            What do Speakers get?
-                                          </h3>
-                                          <ul class="package-list">
-                                            <li>
-                                              <i class="material-icons">check</i><span>Full conference pass</span>
-                                            </li>
-                                            <li><i class="material-icons">check</i><span>The opportunity to impact the lives of over a hundred developers</span>
-                                            </li>
-                                            <li><i class="material-icons">check</i><span>1 additional Free Conference ticket</span>
-                                            </li>
-                                            <li><i class="material-icons">check</i><span>Speakers Dinner and excellent time in the city</span>
-                                            </li>
-                                            <li><i class="material-icons">check</i><span>Possibility to apply for flights and accommodation aid based on available budget</span>
-                                            </li>
-                                          </ul>
-                                        </div>
-                                      </div>
-                                      <div class="form-container">
-                                        <div class="field-container">
-                                          <div id="speaker-name-field-container"
-                                          class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label has-placeholder">
-                                          <input class="mdl-textfield__input" type="text"
-                                          id="speaker-name-field" autocomplete="off">
-                                          <label class="mdl-textfield__label search-bar-input-label"
-                                          for="speaker-name-field">Name</label>
-                                          <span id="speaker-name-error" class="mdl-textfield__error">This field is required!</span>
-                                        </div>
-                                      </div>
-                                      <div class="field-container">
-                                        <div id="speaker-email-field-container"
-                                        class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label has-placeholder">
-                                        <input class="mdl-textfield__input" type="text"
-                                        id="speaker-email-field" autocomplete="off">
-                                        <label class="mdl-textfield__label search-bar-input-label"
-                                        for="speaker-email-field">Email</label>
-                                        <span id="speaker-email-error" class="mdl-textfield__error"></span>
-                                      </div>
-                                    </div>
-                                    <div class="field-container">
-                                      <div id="speaker-type-field-container"
-                                      class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label has-placeholder">
-                                      <input class="mdl-textfield__input" type="text"
-                                      id="speaker-type-field" autocomplete="off">
-                                      <label class="mdl-textfield__label search-bar-input-label"
-                                      for="speaker-type-field">Type (workshop or talk)</label>
-                                      <span id="speaker-type-error" class="mdl-textfield__error"></span>
-                                    </div>
-                                  </div>
-                                  <div class="field-container">
-                                    <div id="speaker-title-field-container"
-                                    class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label has-placeholder">
-                                    <input class="mdl-textfield__input" type="text"
-                                    id="speaker-title-field" autocomplete="off">
-                                    <label class="mdl-textfield__label search-bar-input-label"
-                                    for="speaker-title-field">Title</label>
-                                    <span id="speaker-title-error" class="mdl-textfield__error"></span>
-                                  </div>
-                                </div>
-                                <div class="field-container textarea-container">
-                                  <div id="speaker-description-field-container"
-                                  class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label has-placeholder">
-                                  <!-- Add class .is-invalid when error -->
-                                  <textarea class="mdl-textfield__input" rows="3"
-                                  id="speaker-description-field"></textarea>
-                                  <label class="mdl-textfield__label" for="speaker-description-field">Description, duration, url, language, other info</label>
-                                  <span id="speaker-description-error"
-                                  class="mdl-textfield__error"></span>
-                                  <!-- This is the error message, it's shown when parent has .is-invalid class-->
-                                </div>
-                              </div>
-                              <div class="checkbox-container">
-                                <label id="speaker-support-field-container"
-                                class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"
-                                for="speaker-support-field">
-                                <span class="mdl-checkbox__label">Require financial support<br/>
-                                  (flights and accommodation)</span>
-                                  <input type="checkbox" id="speaker-support-field"
-                                  class="mdl-checkbox__input">
-                                </label>
-                              </div>
-
-                              <p id="speaker-form_confirmation" class="package-text"></p>
-
-                              <button id="call-for-proposal-send-button" type="button"
-                              class="mdl-button mdl-js-button mdl-js-ripple-effect send-btn">
-                              <span id="call-for-proposal-send-button-text">Send</span>
-                              <i id="call-for-proposal-loading-gif"
-                              class="material-icons spin-animation">loop</i>
-                              <!-- Remove .hidden for show the loading icon -->
-                            </button>
-                          </div>
-                        </div>
-                      </div><!-- row ends -->
-                    </div><!-- got-idea-content ends -->
-
-                    <div class="section-content sponsors-content">
-                      <div class="title-section sponsors-title">
-                        Sponsors
-                      </div>
-                      <div class="row row-centered">
-                        <div class="col-xs-12 col-sm-5 col-md-6 col-centered">
-                          <div class="sponsors">
-                            <a href="https://www.python.org/psf/" target="_blank">
-                              <div class="sponsor-logo sponsor-logo-python-foundation"></div>
-                            </a>
-                          </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-5 col-md-6 col-centered">
-                          <div class="sponsors">
-                            <a href="https://www.toptal.com/" target="_blank">
-                              <div class="sponsor-logo sponsor-logo-toptal"></div>
-                            </a>
-                          </div>
-                        </div>
-                      </div><!-- row ends -->
-                    </div><!-- sponsors-content ends -->
-
-                    <div class="section-content sponsors-content">
-                      <div class="title-section partners-title">
-                        Partners
-                      </div>
-                      <div class="row row-centered">
-                        <div class="col-xs-12 col-centered">
-                          <div class="sponsors">
-                            <a href="http://www.usta.edu.co/" target="_blank">
-                              <div class="sponsor-logo partner-logo-santo-tomas"></div>
-                            </a>
-                          </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-5 col-md-6 col-centered">
-                          <div class="sponsors">
-                            <a href="http://socialatompr.com/" target="_blank">
-                              <div class="sponsor-logo partner-logo-socialatompr"></div>
-                            </a>
-                          </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-5 col-md-6 col-centered">
-                          <div class="sponsors">
-                            <a href="hhttp://pulsosocial.com/" target="_blank">
-                              <div class="sponsor-logo partner-logo-pulsosocial"></div>
-                            </a>
-                          </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-5 col-md-6 col-centered">
-                          <div class="sponsors">
-                            <a href="https://www.jetbrains.com/pycharm/" target="_blank">
-                              <div class="sponsor-logo partner-logo-pycharm"></div>
-                            </a>
-                          </div>
-                        </div>
-                      </div><!-- row ends -->
-                    </div><!-- sponsors-content ends -->
-
-                    <div class="section-content become-sponsor-content">
-                      <a href="https://docs.google.com/presentation/d/1pKGINSRON68Im1EzUNgQQWNQxpFkvsjxVk1AH4KOHrI/edit?usp=sharing" target="_blank">
-                        <div class="become-sponsor"></div>
-                      </a>
-                    </div>
-
-                    <div class="section-content organizers-content">
-
-                      <div class="title-section organizers-title">
-                        Organizers
-                      </div>
-                      <div class="row row-centered">
-                        <div class="col-xs-12 col-sm-4 col-md-3 col-centered">
-                          <div class="organizer">
-                            <img src="../static/images/organizer-01.png">
-                            <div class="organizer-name">John Roa</div>
-                            <div class="organizer-description">Event Organizer</div>
-                            <div class="organizer-links">
-                              <a href="https://about.me/jhonjairoroa87" target="_blank">
-                                <div class="organizer-link link-web"></div>
-                              </a>
-                              <a href="https://twitter.com/jhonjairoroa87" target="_blank">
-                                <div class="organizer-link link-twitter"></div>
-                              </a>
-                              <a href="https://www.linkedin.com/in/johnroa27" target="_blank">
-                                <div class="organizer-link link-linkedin"></div>
-                              </a>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-4 col-md-3 col-centered">
-                          <div class="organizer">
-                            <img src="../static/images/organizer-14.png">
-                            <div class="organizer-name">Mario Morales</div>
-                            <div class="organizer-description">Event Co-organizer</div>
-                            <div class="organizer-links">
-                              <!-- <a href="https://twitter.com/ivancarrancho" target="_blank"><div class="organizer-link link-twitter"></div></a> -->
-                              <a href="https://www.linkedin.com/in/emetricz" target="_blank">
-                                <div class="organizer-link link-linkedin"></div>
-                              </a>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-4 col-md-3 col-centered">
-                          <div class="organizer">
-                            <img src="../static/images/organizer-02.png">
-                            <div class="organizer-name">Edwin (Hijo) Jerez</div>
-                            <div class="organizer-description">Art Director & Front-end</div>
-                            <div class="organizer-links">
-                              <a href="https://www.behance.net/soyelhijo" target="_blank">
-                                <div class="organizer-link link-behance"></div>
-                              </a>
-                              <a href="http://www.soyelhijo.com" target="_blank">
-                                <div class="organizer-link link-web"></div>
-                              </a>
-                              <a href="https://twitter.com/soyelhijo" target="_blank">
-                                <div class="organizer-link link-twitter"></div>
-                              </a>
-                              <a href="https://www.linkedin.com/in/soyelhijo" target="_blank">
-                                <div class="organizer-link link-linkedin"></div>
-                              </a>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-4 col-md-3 col-centered">
-                          <div class="organizer">
-                            <img src="../static/images/organizer-06.png">
-                            <div class="organizer-name">Patricia Montoya</div>
-                            <div class="organizer-description">Marketing & Logistics</div>
-                            <div class="organizer-links">
-                              <!-- <a href="https://twitter.com/ivancarrancho" target="_blank"><div class="organizer-link link-twitter"></div></a> -->
-                              <a href="https://www.linkedin.com/in/montoyapatricia" target="_blank">
-                                <div class="organizer-link link-linkedin"></div>
-                              </a>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-4 col-md-3 col-centered">
-                          <div class="organizer">
-                            <img src="../static/images/organizer-07.png">
-                            <div class="organizer-name">Cristian Otálvaro</div>
-                            <div class="organizer-description">Social Media</div>
-                            <div class="organizer-links">
-                              <a href="http://behance.net/cmotalvaro" target="_blank">
-                                <div class="organizer-link link-behance"></div>
-                              </a>
-                              <a href="http://about.me/cristian.otalvaro" target="_blank">
-                                <div class="organizer-link link-web"></div>
-                              </a>
-                              <a href="http://www.linkedin.com/in/cristianotalvarog" target="_blank">
-                                <div class="organizer-link link-linkedin"></div>
-                              </a>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-4 col-md-3 col-centered">
-                          <div class="organizer">
-                            <img src="../static/images/organizer-17.png">
-                            <div class="organizer-name">Ana Milena Suarez</div>
-                            <div class="organizer-description">Web development</div>
-                            <div class="organizer-links">
-                              <a href="https://twitter.com/milena_suarezl" target="_blank">
-                                <div class="organizer-link link-twitter"></div>
-                              </a>
-                              <a href="https://co.linkedin.com/in/milenasuarezl" target="_blank">
-                                <div class="organizer-link link-linkedin"></div>
-                              </a>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-4 col-md-3 col-centered">
-                          <div class="organizer">
-                            <img src="../static/images/organizer-04.png">
-                            <div class="organizer-name">Ivan Ramirez</div>
-                            <div class="organizer-description">Social Media</div>
-                            <div class="organizer-links">
-                              <a href="https://twitter.com/ivancarrancho" target="_blank">
-                                <div class="organizer-link link-twitter"></div>
-                              </a>
-                              <a href="https://co.linkedin.com/in/ivancramirez" target="_blank">
-                                <div class="organizer-link link-linkedin"></div>
-                              </a>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-4 col-md-3 col-centered">
-                          <div class="organizer">
-                            <img src="../static/images/organizer-09.png">
-                            <div class="organizer-name">Andres Duque</div>
-                            <div class="organizer-description">Social media</div>
-                            <div class="organizer-links">
-                              <a href="https://twitter.com/saduqz" target="_blank">
-                                <div class="organizer-link link-twitter"></div>
-                              </a>
-                              <a href="https://www.facebook.com/saduqz" target="_blank">
-                                <div class="organizer-link link-facebook"></div>
-                              </a>
-                              <a href="https://www.linkedin.com/in/saduqz" target="_blank">
-                                <div class="organizer-link link-linkedin"></div>
-                              </a>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-4 col-md-3 col-centered">
-                          <div class="organizer">
-                            <img src="../static/images/organizer-10.png">
-                            <div class="organizer-name">Juan Carlos Rodriguez</div>
-                            <div class="organizer-description">Logistics</div>
-                          </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-4 col-md-3 col-centered">
-                          <div class="organizer">
-                            <img src="../static/images/organizer-11.png">
-                            <div class="organizer-name">Fercho Duque</div>
-                            <div class="organizer-description">Designer</div>
-                          </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-4 col-md-3 col-centered">
-                          <div class="organizer">
-                            <img src="../static/images/organizer-08.png">
-                            <div class="organizer-name">Carlos Salgado</div>
-                            <div class="organizer-description">Tickets</div>
-                            <div class="organizer-links">
-                              <!--
-                              <a href="https://twitter.com/ivancarrancho" target="_blank"><div class="organizer-link link-twitter"></div></a>
-                              <a href="https://co.linkedin.com/in/ivancramirez" target="_blank"><div class="organizer-link link-linkedin"></div></a> -->
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-4 col-md-3 col-centered">
-                          <div class="organizer">
-                            <img src="../static/images/organizer-12.png">
-                            <div class="organizer-name">Paola Pacheco</div>
-                            <div class="organizer-description">Django Girls</div>
-                            <div class="organizer-links">
-                              <a href="https://twitter.com/pk_pacheco" target="_blank"><div class="organizer-link link-twitter"></div></a>
-                              <a href="https://br.linkedin.com/in/paolakatherine/en" target="_blank"><div class="organizer-link link-linkedin"></div></a>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-4 col-md-3 col-centered">
-                          <div class="organizer">
-                            <img src="../static/images/organizer-00.png">
-                            <div class="organizer-name">Michael Pierre</div>
-                            <div class="organizer-description">Sponsors</div>
-                            <div class="organizer-links">
-                              <a href="https://www.linkedin.com/in/michael-pierre-60516712a" target="_blank"><div class="organizer-link link-linkedin"></div></a>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="col-xs-12 col-sm-4 col-md-3 col-centered">
-                          <div class="organizer">
-                            <img src="../static/images/organizer-15.png">
-                            <div class="organizer-name">Andres Muñoz</div>
-                            <div class="organizer-description">Django Girls</div>
-                            <div class="organizer-links">
-                              <a href="https://twitter.com/pipemun" target="_blank"><div class="organizer-link link-twitter"></div></a>
-                              <a href="https://co.linkedin.com/in/andresfmunoz/en" target="_blank"><div class="organizer-link link-linkedin"></div></a>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="col-xs-12 col-sm-4 col-md-3 col-centered">
-                          <div class="organizer">
-                            <img src="../static/images/organizer-13.png">
-                            <div class="organizer-name">Jorge Martinez</div>
-                            <div class="organizer-description">Logistics</div>
-                            <div class="organizer-links">
-                              <a href="https://twitter.com/_jorgemartinezg" target="_blank"><div class="organizer-link link-twitter"></div></a>
-                              <a href="https://www.facebook.com/jorge.martinezgomez.12" target="_blank"><div class="organizer-link link-facebook"></div></a>
-                              <a href="https://co.linkedin.com/in/jorge-martinez-923a1126" target="_blank"><div class="organizer-link link-linkedin"></div></a>
-                              <a href="https://github.com/JorgeMartinezG" target="_blank"><div class="organizer-link link-github"></div></a>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-4 col-md-3 col-centered">
-                          <div class="organizer">
-                            <img src="../static/images/organizer-16.png">
-                            <div class="organizer-name">Jennifer Velez</div>
-                            <div class="organizer-description">Logistics</div>
-                          </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-4 col-md-3 col-centered">
-                          <div class="organizer">
-                            <img src="../static/images/organizer-05.png">
-                            <div class="organizer-name">Nicolas Molina</div>
-                            <div class="organizer-description">Sponsors</div>
-                            <div class="organizer-links">
-                              <a href="https://twitter.com/nicobytes" target="_blank">
-                                <div class="organizer-link link-twitter"></div>
-                              </a>
-                              <a href="https://co.linkedin.com/in/nicobytes/en" target="_blank">
-                                <div class="organizer-link link-linkedin"></div>
-                              </a>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-4 col-md-3 col-centered">
-                          <div class="organizer">
-                            <img src="../static/images/organizer-03.png">
-                            <div class="organizer-name">Alejandro Correa</div>
-                            <div class="organizer-description">Venue</div>
-                            <div class="organizer-links">
-                              <a href="http://albahnsen.com" target="_blank">
-                                <div class="organizer-link link-web"></div>
-                              </a>
-                              <a href="https://twitter.com/albahnsen" target="_blank">
-                                <div class="organizer-link link-twitter"></div>
-                              </a>
-                              <a href="https://co.linkedin.com/in/albahnsen/en" target="_blank">
-                                <div class="organizer-link link-linkedin"></div>
-                              </a>
-                            </div>
-                          </div>
-                        </div>
-                        <!--
-                        <div class="col-xs-12 col-sm-4 col-md-3 col-centered">
-                          <div class="organizer">
-                            <img src="../static/images/organizer-00.png">
-                            <div class="organizer-name">Mark Cutts</div>
-                            <div class="organizer-description">Google Engineer</div>
-                            <div class="organizer-links">
-                              <a href="" target="_blank"><div class="organizer-link link-web"></div></a>
-                              <a href="" target="_blank"><div class="organizer-link link-twitter"></div></a>
-                              <a href="" target="_blank"><div class="organizer-link link-facebook"></div></a>
-                              <a href="" target="_blank"><div class="organizer-link link-linkedin"></div></a>
-                              <a href="" target="_blank"><div class="organizer-link link-github"></div></a>
-                            </div>
-                          </div>
-                        </div>
-                        -->
-                      </div>
-                      <div class="organizers-advice">
-                        We're looking for volunteers, send us an email to <a href="mailto:hello@pycon.co">hello@pycon.co</a>
-                      </div>
-                    </div><!-- organizers-content ends -->
-
-                  </div><!-- container-box ends -->
-
-                  <footer>
-                    <div class="footer-advice">
-                      Pycon Colombia is a non-profit community conference organized by volunteers of the Python and
-                      Tech community
-                    </div>
-                    <div class="footer-advice">
-                      We adopt and enforce the
-                      <a href=" https://github.com/PyConColombia/codigo-de-conducta/blob/master/README_EN.md"
-                         target="_blank"> PyCon Colombia Code of Conduct</a> for all of our community events
-                    </div>
-
-                    <div class="footer-email"><a href="mailto:hello@pycon.co" target="_blank">hello@pycon.co</a></div>
-                    <div class="footer-logos">
-                      <!-- <a href="https://twitter.com/pyconcolombia" target="_blank">
-                        <div class="footer-logo footer-logo-twitter"></div>
-                      </a>
-                      <a href="https://www.facebook.com/pyconcolombia/" target="_blank">
-                        <div class="footer-logo footer-logo-facebook"></div>
-                      </a> -->
-                      <div class="social-btn">
-                        <!-- Twitter follow button -->
-                        <a href="https://twitter.com/pyconcolombia" class="twitter-follow-button"
-                        data-show-count="false">Follow @pyconco</a>
-                      </div>
-                      <div class="social-btn">
-                        <!-- Twitter share button -->
-                        <a class="twitter-share-button"
-                        href="https://twitter.com/intent/tweet?text=For%20the%20first%20time%20ever%20Pycon%20will%20be%20in%20Colombia%20from%2010-11%20of%20February%20of%202017%20%40pyconcolombia">Tweet</a>
-                      </div>
-                      <div class="social-btn">
-                        <div id="fb-root"></div>
-                        <!-- Facebook share and like button -->
-                        <div class="fb-like" data-href="https://www.facebook.com/pyconcolombia"
-                        data-layout="button" data-action="like" data-size="small"
-                        data-show-faces="true" data-share="true"></div>
-                      </div>
-                    </div>
-                  </footer>
+        <div class="container-box">
+          <div class="section-content sponsors-content">
+            <div class="title-section sponsors-title">
+              Sponsors
+            </div>
+            <div class="row row-centered">
+              <div class="col-xs-12 col-sm-5 col-md-6 col-centered">
+                <div class="sponsors">
+                  <a href="https://www.python.org/psf/" target="_blank">
+                    <div class="sponsor-logo sponsor-logo-python-foundation"></div>
+                  </a>
                 </div>
+              </div>
+              <div class="col-xs-12 col-sm-5 col-md-6 col-centered">
+                <div class="sponsors">
+                  <a href="https://www.toptal.com/" target="_blank">
+                    <div class="sponsor-logo sponsor-logo-toptal"></div>
+                  </a>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-5 col-md-6 col-centered">
+                <div class="sponsors">
+                  <a href="" target="_blank">
+                    <div class="sponsor-logo sponsor-logo-piensa"></div>
+                  </a>
+                </div>
+              </div>
+            </div><!-- row ends -->
+          </div><!-- sponsors-content ends -->
+        </div>
 
-                
+        <div class="container-box">
+          <div class="section-content sponsors-content">
+            <div class="title-section partners-title">
+              Partners
+            </div>
+            <div class="row row-centered">
+              <div class="col-xs-12 col-centered">
+                <div class="sponsors">
+                  <a href="http://www.usta.edu.co/" target="_blank">
+                    <div class="sponsor-logo partner-logo-santo-tomas"></div>
+                  </a>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-5 col-md-6 col-centered">
+                <div class="sponsors">
+                  <a href="http://socialatompr.com/" target="_blank">
+                    <div class="sponsor-logo partner-logo-socialatompr"></div>
+                  </a>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-5 col-md-6 col-centered">
+                <div class="sponsors">
+                  <a href="hhttp://pulsosocial.com/" target="_blank">
+                    <div class="sponsor-logo partner-logo-pulsosocial"></div>
+                  </a>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-5 col-md-6 col-centered">
+                <div class="sponsors">
+                  <a href="https://www.jetbrains.com/pycharm/" target="_blank">
+                    <div class="sponsor-logo partner-logo-pycharm"></div>
+                  </a>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-5 col-md-6 col-centered">
+                <div class="sponsors">
+                  <a href="https://tappsi.co/" target="_blank">
+                    <div class="sponsor-logo partner-logo-tappsi"></div>
+                  </a>
+                </div>
+              </div>
+            </div><!-- row ends -->
+          </div><!-- sponsors-content ends -->
+        </div>
+
+        <div class="container-box">
+          <div class="section-content become-sponsor-content">
+            <a href="https://docs.google.com/presentation/d/1pKGINSRON68Im1EzUNgQQWNQxpFkvsjxVk1AH4KOHrI/edit?usp=sharing" target="_blank">
+              <div class="become-sponsor"></div>
+            </a>
+          </div>
+        </div>
+
+        <div class="container-box">
+          <div class="section-content organizers-content">
+
+            <div class="title-section organizers-title">
+              Organizers
+            </div>
+            <div class="row row-centered">
+              <div class="col-xs-12 col-sm-4 col-md-3 col-centered">
+                <div class="organizer">
+                  <img src="../static/images/organizer-01.png">
+                  <div class="organizer-name">John Roa</div>
+                  <div class="organizer-description">Event Organizer</div>
+                  <div class="organizer-links">
+                    <a href="https://about.me/jhonjairoroa87" target="_blank">
+                      <div class="organizer-link link-web"></div>
+                    </a>
+                    <a href="https://twitter.com/jhonjairoroa87" target="_blank">
+                      <div class="organizer-link link-twitter"></div>
+                    </a>
+                    <a href="https://www.linkedin.com/in/johnroa27" target="_blank">
+                      <div class="organizer-link link-linkedin"></div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-4 col-md-3 col-centered">
+                <div class="organizer">
+                  <img src="../static/images/organizer-14.png">
+                  <div class="organizer-name">Mario Morales</div>
+                  <div class="organizer-description">Event Co-organizer</div>
+                  <div class="organizer-links">
+                    <!-- <a href="https://twitter.com/ivancarrancho" target="_blank"><div class="organizer-link link-twitter"></div></a> -->
+                    <a href="https://www.linkedin.com/in/emetricz" target="_blank">
+                      <div class="organizer-link link-linkedin"></div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-4 col-md-3 col-centered">
+                <div class="organizer">
+                  <img src="../static/images/organizer-02.png">
+                  <div class="organizer-name">Edwin (Hijo) Jerez</div>
+                  <div class="organizer-description">Art Director & Front-end</div>
+                  <div class="organizer-links">
+                    <a href="https://www.behance.net/soyelhijo" target="_blank">
+                      <div class="organizer-link link-behance"></div>
+                    </a>
+                    <a href="http://www.soyelhijo.com" target="_blank">
+                      <div class="organizer-link link-web"></div>
+                    </a>
+                    <a href="https://twitter.com/soyelhijo" target="_blank">
+                      <div class="organizer-link link-twitter"></div>
+                    </a>
+                    <a href="https://www.linkedin.com/in/soyelhijo" target="_blank">
+                      <div class="organizer-link link-linkedin"></div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-4 col-md-3 col-centered">
+                <div class="organizer">
+                  <img src="../static/images/organizer-06.png">
+                  <div class="organizer-name">Patricia Montoya</div>
+                  <div class="organizer-description">Marketing & Logistics</div>
+                  <div class="organizer-links">
+                    <!-- <a href="https://twitter.com/ivancarrancho" target="_blank"><div class="organizer-link link-twitter"></div></a> -->
+                    <a href="https://www.linkedin.com/in/montoyapatricia" target="_blank">
+                      <div class="organizer-link link-linkedin"></div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-4 col-md-3 col-centered">
+                <div class="organizer">
+                  <img src="../static/images/organizer-07.png">
+                  <div class="organizer-name">Cristian Otálvaro</div>
+                  <div class="organizer-description">Social Media</div>
+                  <div class="organizer-links">
+                    <a href="http://behance.net/cmotalvaro" target="_blank">
+                      <div class="organizer-link link-behance"></div>
+                    </a>
+                    <a href="http://about.me/cristian.otalvaro" target="_blank">
+                      <div class="organizer-link link-web"></div>
+                    </a>
+                    <a href="http://www.linkedin.com/in/cristianotalvarog" target="_blank">
+                      <div class="organizer-link link-linkedin"></div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-4 col-md-3 col-centered">
+                <div class="organizer">
+                  <img src="../static/images/organizer-17.png">
+                  <div class="organizer-name">Ana Milena Suarez</div>
+                  <div class="organizer-description">Web development</div>
+                  <div class="organizer-links">
+                    <a href="https://twitter.com/milena_suarezl" target="_blank">
+                      <div class="organizer-link link-twitter"></div>
+                    </a>
+                    <a href="https://co.linkedin.com/in/milenasuarezl" target="_blank">
+                      <div class="organizer-link link-linkedin"></div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-4 col-md-3 col-centered">
+                <div class="organizer">
+                  <img src="../static/images/organizer-04.png">
+                  <div class="organizer-name">Ivan Ramirez</div>
+                  <div class="organizer-description">Social Media</div>
+                  <div class="organizer-links">
+                    <a href="https://twitter.com/ivancarrancho" target="_blank">
+                      <div class="organizer-link link-twitter"></div>
+                    </a>
+                    <a href="https://co.linkedin.com/in/ivancramirez" target="_blank">
+                      <div class="organizer-link link-linkedin"></div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-4 col-md-3 col-centered">
+                <div class="organizer">
+                  <img src="../static/images/organizer-09.png">
+                  <div class="organizer-name">Andres Duque</div>
+                  <div class="organizer-description">Social media</div>
+                  <div class="organizer-links">
+                    <a href="https://twitter.com/saduqz" target="_blank">
+                      <div class="organizer-link link-twitter"></div>
+                    </a>
+                    <a href="https://www.facebook.com/saduqz" target="_blank">
+                      <div class="organizer-link link-facebook"></div>
+                    </a>
+                    <a href="https://www.linkedin.com/in/saduqz" target="_blank">
+                      <div class="organizer-link link-linkedin"></div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-4 col-md-3 col-centered">
+                <div class="organizer">
+                  <img src="../static/images/organizer-10.png">
+                  <div class="organizer-name">Juan Carlos Rodriguez</div>
+                  <div class="organizer-description">Logistics</div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-4 col-md-3 col-centered">
+                <div class="organizer">
+                  <img src="../static/images/organizer-18.png">
+                  <div class="organizer-name">Jorge Galvis</div>
+                  <div class="organizer-description">Mobile app</div>
+                  <div class="organizer-links">
+                    <a href="https://twitter.com/jorlugaqui" target="_blank"><div class="organizer-link link-twitter"></div></a>
+                    <a href="https://co.linkedin.com/in/jorlugaqui" target="_blank"><div class="organizer-link link-linkedin"></div></a>
+                    <a href="https://github.com/jorlugaqui" target="_blank"><div class="organizer-link link-github"></div></a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-4 col-md-3 col-centered">
+                <div class="organizer">
+                  <img src="../static/images/organizer-11.png">
+                  <div class="organizer-name">Fercho Duque</div>
+                  <div class="organizer-description">Designer</div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-4 col-md-3 col-centered">
+                <div class="organizer">
+                  <img src="../static/images/organizer-08.png">
+                  <div class="organizer-name">Carlos Salgado</div>
+                  <div class="organizer-description">Tickets</div>
+                  <div class="organizer-links">
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-4 col-md-3 col-centered">
+                <div class="organizer">
+                  <img src="../static/images/organizer-12.png">
+                  <div class="organizer-name">Paola Pacheco</div>
+                  <div class="organizer-description">Django Girls</div>
+                  <div class="organizer-links">
+                    <a href="https://twitter.com/pk_pacheco" target="_blank"><div class="organizer-link link-twitter"></div></a>
+                    <a href="https://br.linkedin.com/in/paolakatherine/en" target="_blank"><div class="organizer-link link-linkedin"></div></a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-4 col-md-3 col-centered">
+                <div class="organizer">
+                  <img src="../static/images/organizer-00.png">
+                  <div class="organizer-name">Michael Pierre</div>
+                  <div class="organizer-description">Sponsors</div>
+                  <div class="organizer-links">
+                    <a href="https://www.linkedin.com/in/michael-pierre-60516712a" target="_blank"><div class="organizer-link link-linkedin"></div></a>
+                  </div>
+                </div>
               </div>
 
-            </div><!-- sections-container ends -->
+              <div class="col-xs-12 col-sm-4 col-md-3 col-centered">
+                <div class="organizer">
+                  <img src="../static/images/organizer-15.png">
+                  <div class="organizer-name">Andres Muñoz</div>
+                  <div class="organizer-description">Django Girls</div>
+                  <div class="organizer-links">
+                    <a href="https://twitter.com/pipemun" target="_blank"><div class="organizer-link link-twitter"></div></a>
+                    <a href="https://co.linkedin.com/in/andresfmunoz/en" target="_blank"><div class="organizer-link link-linkedin"></div></a>
+                  </div>
+                </div>
+              </div>
 
+              <div class="col-xs-12 col-sm-4 col-md-3 col-centered">
+                <div class="organizer">
+                  <img src="../static/images/organizer-13.png">
+                  <div class="organizer-name">Jorge Martinez</div>
+                  <div class="organizer-description">Logistics</div>
+                  <div class="organizer-links">
+                    <a href="https://twitter.com/_jorgemartinezg" target="_blank"><div class="organizer-link link-twitter"></div></a>
+                    <a href="https://www.facebook.com/jorge.martinezgomez.12" target="_blank"><div class="organizer-link link-facebook"></div></a>
+                    <a href="https://co.linkedin.com/in/jorge-martinez-923a1126" target="_blank"><div class="organizer-link link-linkedin"></div></a>
+                    <a href="https://github.com/JorgeMartinezG" target="_blank"><div class="organizer-link link-github"></div></a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-4 col-md-3 col-centered">
+                <div class="organizer">
+                  <img src="../static/images/organizer-16.png">
+                  <div class="organizer-name">Jennifer Velez</div>
+                  <div class="organizer-description">Logistics</div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-4 col-md-3 col-centered">
+                <div class="organizer">
+                  <img src="../static/images/organizer-05.png">
+                  <div class="organizer-name">Nicolas Molina</div>
+                  <div class="organizer-description">Sponsors</div>
+                  <div class="organizer-links">
+                    <a href="https://twitter.com/nicobytes" target="_blank">
+                      <div class="organizer-link link-twitter"></div>
+                    </a>
+                    <a href="https://co.linkedin.com/in/nicobytes/en" target="_blank">
+                      <div class="organizer-link link-linkedin"></div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-4 col-md-3 col-centered">
+                <div class="organizer">
+                  <img src="../static/images/organizer-03.png">
+                  <div class="organizer-name">Alejandro Correa</div>
+                  <div class="organizer-description">Venue</div>
+                  <div class="organizer-links">
+                    <a href="http://albahnsen.com" target="_blank">
+                      <div class="organizer-link link-web"></div>
+                    </a>
+                    <a href="https://twitter.com/albahnsen" target="_blank">
+                      <div class="organizer-link link-twitter"></div>
+                    </a>
+                    <a href="https://co.linkedin.com/in/albahnsen/en" target="_blank">
+                      <div class="organizer-link link-linkedin"></div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="organizers-advice">
+              We're looking for volunteers, send us an email to <a href="mailto:hello@pycon.co">hello@pycon.co</a>
+            </div>
+          </div><!-- organizers-content ends -->
+        </div>
+
+      </div><!-- container-box ends -->
+
+      <footer>
+        <div class="footer-advice">
+          Pycon Colombia is a non-profit community conference organized by volunteers of the Python and
+          Tech community
+        </div>
+        <div class="footer-advice">
+          We adopt and enforce the
+          <a href=" https://github.com/PyConColombia/codigo-de-conducta/blob/master/README_EN.md"
+          target="_blank"> PyCon Colombia Code of Conduct</a> for all of our community events
+        </div>
+
+        <div class="footer-email"><a href="mailto:hello@pycon.co" target="_blank">hello@pycon.co</a></div>
+        <div class="footer-logos">
+          <div class="social-btn">
+            <!-- Twitter follow button -->
+            <a href="https://twitter.com/pyconcolombia" class="twitter-follow-button"
+            data-show-count="false">Follow @pyconco</a>
           </div>
-        </main>
-      </div>
-
-      <img class="hidden" src="images/opimage.jpg"/>
-
-    </body>
-
-              <!-- Enables Facebook buttons -->
-              <script>
-              (function (d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) return;
-                js = d.createElement(s);
-                js.id = id;
-                js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.7";
-                fjs.parentNode.insertBefore(js, fjs);
-              }(document, 'script', 'facebook-jssdk'));
-              </script>
-
-              <!-- Enables twitter buttons -->
-              <script>
-              window.twttr = (function (d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0],
-                t = window.twttr || {};
-                if (d.getElementById(id)) return t;
-                js = d.createElement(s);
-                js.id = id;
-                js.src = "https://platform.twitter.com/widgets.js";
-                fjs.parentNode.insertBefore(js, fjs);
-
-                t._e = [];
-                t.ready = function (f) {
-                  t._e.push(f);
-                };
-
-                return t;
-              }(document, "script", "twitter-wjs"));
-              </script>
-
-              <!-- Google analytics script -->
-              <script>
-              (function (i, s, o, g, r, a, m) {
-                i['GoogleAnalyticsObject'] = r;
-                i[r] = i[r] || function () {
-                  (i[r].q = i[r].q || []).push(arguments)
-                }, i[r].l = 1 * new Date();
-                a = s.createElement(o),
-                m = s.getElementsByTagName(o)[0];
-                a.async = 1;
-                a.src = g;
-                m.parentNode.insertBefore(a, m)
-              })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-              ga('create', 'UA-83993472-1', 'auto');
-              ga('send', 'pageview');
-              </script>
+          <div class="social-btn">
+            <!-- Twitter share button -->
+            <a class="twitter-share-button"
+            href="https://twitter.com/intent/tweet?text=For%20the%20first%20time%20ever%20Pycon%20will%20be%20in%20Colombia%20from%2010-11%20of%20February%20of%202017%20%40pyconcolombia">Tweet</a>
+          </div>
+          <div class="social-btn">
+            <div id="fb-root"></div>
+            <!-- Facebook share and like button -->
+            <div class="fb-like" data-href="https://www.facebook.com/pyconcolombia"
+            data-layout="button" data-action="like" data-size="small"
+            data-show-faces="true" data-share="true"></div>
+          </div>
+        </div>
+      </footer>
+    </div>
 
 
-              <!-- handle functionality for speakers form -->
-              <script>
+  </div>
+
+</div><!-- sections-container ends -->
+
+</div>
+</main>
+</div>
+
+<img class="hidden" src="images/opimage.jpg"/>
+
+</body>
+
+<!-- Enables Facebook buttons -->
+<script>
+(function (d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.7";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+
+<!-- Enables twitter buttons -->
+<script>
+window.twttr = (function (d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+  t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function (f) {
+    t._e.push(f);
+  };
+
+  return t;
+}(document, "script", "twitter-wjs"));
+</script>
+
+<!-- Google analytics script -->
+<script>
+(function (i, s, o, g, r, a, m) {
+  i['GoogleAnalyticsObject'] = r;
+  i[r] = i[r] || function () {
+    (i[r].q = i[r].q || []).push(arguments)
+  }, i[r].l = 1 * new Date();
+  a = s.createElement(o),
+  m = s.getElementsByTagName(o)[0];
+  a.async = 1;
+  a.src = g;
+  m.parentNode.insertBefore(a, m)
+})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+ga('create', 'UA-83993472-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+<!-- handle functionality for speakers form -->
+<script>
 
     /**
      * DOM id's used in the pycon landing page
