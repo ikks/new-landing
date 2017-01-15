@@ -1159,6 +1159,12 @@ footer .footer-logos .footer-logo-facebook {
   height: 84px;
   width: 256px;
 }
+.sponsors-content .sponsors .sponsor-logo-piensa {
+  background: url(images/sponsor-logo-piensa.png) center center no-repeat;
+  background-size: contain;
+  height: 84px;
+  width: 198px;
+}
 .sponsors-content .sponsors .partner-logo-santo-tomas {
   background: url(images/partner-logo-santo-tomas.png) center center no-repeat;
   background-size: contain;
@@ -1182,6 +1188,13 @@ footer .footer-logos .footer-logo-facebook {
   background-size: contain;
   height: 50px;
   width: 270px;
+}
+.sponsors-content .sponsors .partner-logo-tappsi {
+  background: url(images/partner-logo-tappsi.png) center center no-repeat;
+  background-size: contain;
+  height: 90px;
+  margin-top: 36px !important;
+  width: 78px;
 }
 @media screen and (max-width: 992px) {
   .sponsors-content .sponsors-title {
@@ -1207,6 +1220,10 @@ footer .footer-logos .footer-logo-facebook {
     height: 63px;
     width: 192px;
   }
+  .sponsors-content .sponsors .sponsor-logo-piensa {
+    height: 63px;
+    width: 149px;
+  }
   .sponsors-content .sponsors .partner-logo-santo-tomas {
     height: 42px;
     width: 270px;
@@ -1221,7 +1238,12 @@ footer .footer-logos .footer-logo-facebook {
   }
   .sponsors-content .sponsors .partner-logo-pycharm {
     height: 37px;
-    width: 202px;
+    width: 152px;
+  }
+  .sponsors-content .sponsors .partner-logo-tappsi {
+    height: 67px;
+    margin-top: 36px !important;
+    width: 78px;
   }
 }
 @media screen and (max-width: 768px) {
@@ -1248,6 +1270,10 @@ footer .footer-logos .footer-logo-facebook {
     height: 56px;
     width: 172px;
   }
+  .sponsors-content .sponsors .sponsor-logo-piensa {
+    height: 57px;
+    width: 134px;
+  }
   .sponsors-content .sponsors .partner-logo-santo-tomas {
     height: 37px;
     width: 243px;
@@ -1263,6 +1289,11 @@ footer .footer-logos .footer-logo-facebook {
   .sponsors-content .sponsors .partner-logo-pycharm {
     height: 24px;
     width: 182px;
+  }
+  .sponsors-content .sponsors .partner-logo-tappsi {
+    height: 67px;
+    margin-top: 51px !important;
+    width: 78px;
   }
 }
 /*Transitions*/
